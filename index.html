@@ -3,59 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Educação Financeira Completa</title>
+<title>Educação Financeira Interativa</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
-body{background:#f9f9f9;color:#333;line-height:1.6;}
+body{background:#121212;color:#f5f5f5;line-height:1.6;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
-header{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:20px 50px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:1000;}
-header .logo{font-weight:700;font-size:24px;color:#4B6EF6;}
+header{position:sticky;top:0;background:#1e1e1e;display:flex;justify-content:space-between;align-items:center;padding:20px 50px;box-shadow:0 2px 10px rgba(0,0,0,0.7);z-index:1000;}
+header .logo{font-weight:700;font-size:24px;color:#f5f5f5;}
 nav ul{list-style:none;display:flex;gap:25px;}
 nav ul li{font-weight:500;}
-nav ul li a:hover{color:#4B6EF6;}
-.btn-cta{background:#4B6EF6;color:#fff;padding:10px 20px;border-radius:5px;transition:0.3s;}
-.btn-cta:hover{background:#3a53d1;cursor:pointer;}
+nav ul li a:hover{color:#ffcc00;}
+.btn-cta{background:#ffcc00;color:#121212;padding:10px 20px;border-radius:5px;transition:0.3s;}
+.btn-cta:hover{background:#e6b800;cursor:pointer;}
 
 /* Hero */
-.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:90vh;background:linear-gradient(135deg,#4B6EF6,#6ED0F0);color:#fff;padding:0 20px;position:relative;overflow:hidden;}
-.hero img{position:absolute;bottom:0;right:10px;width:200px;opacity:0.3;animation:float 6s ease-in-out infinite;}
-.hero h1{font-size:48px;margin-bottom:20px;animation:fadeIn 1s ease forwards;}
-.hero p{font-size:20px;margin-bottom:30px;animation:fadeIn 2s ease forwards;}
-.hero .buttons{display:flex;gap:20px;flex-wrap:wrap;animation:fadeIn 3s ease forwards;}
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:90vh;background:#1e1e1e;color:#f5f5f5;padding:0 20px;position:relative;overflow:hidden;}
+.hero h1{font-size:48px;margin-bottom:20px;}
+.hero p{font-size:20px;margin-bottom:30px;}
+.hero .buttons{display:flex;gap:20px;flex-wrap:wrap;}
 
-/* Float animation for images */
-@keyframes float {
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-20px);}
-  100%{transform:translateY(0);}
-}
+/* Coins animation */
+.coin{position:absolute;width:40px;height:40px;background:url('https://cdn-icons-png.flaticon.com/512/2026/2026443.png') no-repeat center/contain;animation:fall linear infinite;pointer-events:none;}
+@keyframes fall{0%{transform:translateY(-100px) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}
 
 /* Sections */
 section{padding:80px 50px;}
-section h2{font-size:36px;margin-bottom:50px;text-align:center;color:#4B6EF6;}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+section h2{font-size:36px;margin-bottom:50px;text-align:center;color:#ffcc00;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
 
 /* Cards */
-.card{background:#fff;border-radius:10px;padding:30px 20px;box-shadow:0 5px 20px rgba(0,0,0,0.1);transition:0.3s;display:flex;flex-direction:column;align-items:center;text-align:center;}
-.card:hover{transform:translateY(-10px);box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+.card{background:#1e1e1e;border:1px solid #333;border-radius:10px;padding:30px 20px;box-shadow:0 5px 20px rgba(0,0,0,0.7);transition:0.3s;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.card:hover{transform:translateY(-10px);box-shadow:0 10px 25px rgba(0,0,0,0.9);}
 .card img{width:80px;margin-bottom:20px;}
-.card h3{font-size:24px;margin-bottom:15px;color:#4B6EF6;}
-.card p{margin-bottom:10px;}
+.card h3{font-size:24px;margin-bottom:15px;color:#ffcc00;}
+.card p{margin-bottom:10px;font-size:16px;}
+.learn-btn{margin-top:10px;padding:8px 15px;border:none;border-radius:5px;background:#ffcc00;color:#121212;cursor:pointer;transition:0.3s;}
+.learn-btn:hover{background:#e6b800;}
 
 /* Chat */
-.ai-chat .chat-box{max-width:600px;margin:0 auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.1);}
-.ai-chat .chat-box input{width:100%;padding:15px;border-radius:5px;border:1px solid #ddd;margin-top:10px;}
+.ai-chat .chat-box{max-width:600px;margin:0 auto;background:#1e1e1e;padding:20px;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.7);}
+.ai-chat .chat-box input{width:100%;padding:15px;border-radius:5px;border:1px solid #333;margin-top:10px;background:#121212;color:#f5f5f5;}
 
 /* Footer */
-footer{background:#333;color:#fff;padding:50px;text-align:center;}
+footer{background:#1e1e1e;color:#f5f5f5;padding:50px;text-align:center;border-top:1px solid #333;}
 footer p{margin-bottom:10px;}
 
-@keyframes fadeIn{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
 @media(max-width:768px){header{flex-direction:column;gap:15px;} nav ul{flex-direction:column;gap:10px;}}
 </style>
 </head>
 <body>
+
+<!-- Coins falling -->
+<div id="coins-container"></div>
 
 <!-- Header -->
 <header>
@@ -67,6 +67,7 @@ footer p{margin-bottom:10px;}
       <li><a href="#realestate">Imóveis & Veículos</a></li>
       <li><a href="#strategies">Estratégias</a></li>
       <li><a href="#tips">Dicas</a></li>
+      <li><a href="#simulator">Simulador</a></li>
       <li><a href="#ai">Chat IA</a></li>
     </ul>
   </nav>
@@ -76,12 +77,11 @@ footer p{margin-bottom:10px;}
 <!-- Hero -->
 <section class="hero">
   <h1>Aprenda a Ganhar, Investir e Multiplicar Seu Dinheiro</h1>
-  <p>Dicas completas de finanças, investimentos, imóveis, veículos e estratégias para riqueza.</p>
+  <p>Plataforma completa com dicas, simuladores, estratégias e animações de finanças.</p>
   <div class="buttons">
     <a href="#earn" class="btn-cta">Ver Dicas</a>
     <a href="#invest" class="btn-cta">Investimentos</a>
   </div>
-  <img src="https://cdn-icons-png.flaticon.com/512/264/264112.png" alt="Patinho de dinheiro">
 </section>
 
 <!-- Ganhar Dinheiro -->
@@ -91,126 +91,47 @@ footer p{margin-bottom:10px;}
     <div class="card">
       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Freelance">
       <h3>Trabalhos Freelance</h3>
-      <p>Use suas habilidades para oferecer serviços digitais ou presenciais e receber por projeto ou hora.</p>
+      <p>Ofereça serviços digitais ou presenciais. Pode gerar renda rápida e aumentar experiência profissional.</p>
+      <button class="learn-btn" onclick="alert('Exemplos: design, programação, aulas online, consultoria. Comece pequeno e cresça.')">Saiba Mais</button>
     </div>
     <div class="card">
       <img src="https://cdn-icons-png.flaticon.com/512/3143/3143496.png" alt="Negócios">
       <h3>Negócios Próprios</h3>
-      <p>Empreenda online ou offline, crie produtos ou serviços e lucre consistentemente.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/3444/3444645.png" alt="Renda Passiva">
-      <h3>Renda Passiva</h3>
-      <p>Ganhe dinheiro mesmo sem trabalhar ativamente com investimentos e aluguéis.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Marketing Digital">
-      <h3>Marketing Digital</h3>
-      <p>Venda produtos ou serviços online e alcance um público amplo.</p>
+      <p>Empreender online ou offline cria escalabilidade e multiplicação de lucros.</p>
+      <button class="learn-btn" onclick="alert('Exemplos: loja online, produtos digitais, serviços especializados.')">Saiba Mais</button>
     </div>
   </div>
 </section>
 
 <!-- Investimentos -->
-<section id="invest" style="background:#f0f4ff;">
+<section id="invest" style="background:#1a1a1a;">
   <h2>Investimentos</h2>
   <div class="cards">
     <div class="card">
       <img src="https://cdn-icons-png.flaticon.com/512/2583/2583430.png" alt="Renda Fixa">
       <h3>Renda Fixa</h3>
-      <p>Tesouro Direto, CDB, LCI/LCA e poupança para segurança e crescimento gradual.</p>
+      <p>Tesouro Direto, CDB, LCI/LCA. Baixo risco, ideal para iniciantes e reservas de emergência.</p>
+      <button class="learn-btn" onclick="alert('Compre títulos do governo ou bancos, acompanhe taxas e prazos. Crescimento gradual e seguro.')">Saiba Mais</button>
     </div>
     <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Ações">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Renda Variável">
       <h3>Renda Variável</h3>
-      <p>Ações, ETFs e fundos para multiplicar seu capital ao longo do tempo.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/3311/3311290.png" alt="Criptomoedas">
-      <h3>Criptomoedas</h3>
-      <p>Investimentos digitais como Bitcoin, Ethereum e altcoins para diversificação.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/679/679816.png" alt="Commodities">
-      <h3>Commodities</h3>
-      <p>Ouro, prata e petróleo podem ser investimentos de proteção e valorização.</p>
+      <p>Ações, ETFs e fundos. Maior potencial de lucro, mas exige estudo e diversificação.</p>
+      <button class="learn-btn" onclick="alert('Aprenda sobre empresas, gráficos, análise fundamentalista e diversificação.')">Saiba Mais</button>
     </div>
   </div>
 </section>
 
-<!-- Imóveis & Veículos -->
-<section id="realestate">
-  <h2>Imóveis e Veículos</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png" alt="Imóveis">
-      <h3>Comprar e Vender Imóveis</h3>
-      <p>Adquira, valorize e venda imóveis para lucro ou renda passiva.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Veículos">
-      <h3>Veículos</h3>
-      <p>Compra e venda estratégica de veículos para investimento e lucro.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2920/2920142.png" alt="Aluguel">
-      <h3>Aluguel</h3>
-      <p>Alugue imóveis ou veículos e gere renda passiva constante.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Estratégias -->
-<section id="strategies" style="background:#f0f4ff;">
-  <h2>Estratégias Financeiras</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Reinvestimento">
-      <h3>Reinvestimento</h3>
-      <p>Reinvista lucros e rendimentos para multiplicar seu patrimônio.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="Diversificação">
-      <h3>Diversificação</h3>
-      <p>Invista em diferentes ativos para reduzir riscos e aumentar ganhos.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910761.png" alt="Escalar Negócios">
-      <h3>Escalar Negócios</h3>
-      <p>Amplie negócios e oportunidades para alcançar maiores resultados financeiros.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2810/2810479.png" alt="Proteção">
-      <h3>Proteção do Patrimônio</h3>
-      <p>Seguros, fundos de emergência e planejamento financeiro seguro.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Dicas de Dinheiro -->
-<section id="tips">
-  <h2>Dicas de Dinheiro</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Planejamento">
-      <h3>Planejamento Financeiro</h3>
-      <p>Organize receitas, despesas e objetivos para tomar decisões inteligentes.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png" alt="Juros">
-      <h3>Juros Compostos</h3>
-      <p>Use os juros a seu favor para multiplicar seu capital ao longo do tempo.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922512.png" alt="Renda Passiva">
-      <h3>Renda Passiva</h3>
-      <p>Gere dinheiro constantemente sem trabalhar ativamente.</p>
-    </div>
-    <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Múltiplas Fontes">
-      <h3>Múltiplas Fontes de Renda</h3>
-      <p>Combine diferentes investimentos, negócios e oportunidades de lucro.</p>
-    </div>
+<!-- Simulador de Investimentos -->
+<section id="simulator" style="padding:50px;background:#121212;">
+  <h2>Simulador de Investimentos</h2>
+  <p style="text-align:center;">Digite o valor inicial e o tempo para ver quanto seu dinheiro pode render com juros compostos.</p>
+  <div style="max-width:400px;margin:0 auto;text-align:center;">
+    <input type="number" id="initial" placeholder="Valor inicial (R$)" style="width:100%;padding:10px;margin-bottom:10px;">
+    <input type="number" id="rate" placeholder="Taxa mensal (%)" style="width:100%;padding:10px;margin-bottom:10px;">
+    <input type="number" id="months" placeholder="Meses" style="width:100%;padding:10px;margin-bottom:10px;">
+    <button class="learn-btn" onclick="simulate()">Simular</button>
+    <p id="result" style="margin-top:15px;font-weight:bold;"></p>
   </div>
 </section>
 
@@ -220,16 +141,38 @@ footer p{margin-bottom:10px;}
   <div class="ai-chat">
     <div class="chat-box">
       <p>💬 Pergunte algo sobre dinheiro, investimentos ou estratégias:</p>
-      <input type="text" placeholder="Ex: Como posso investir 1000 reais?" onkeydown="if(event.key==='Enter'){alert('IA Simulada: Diversifique seu investimento entre renda fixa, ações, FIIs e criptomoedas para maior segurança e crescimento!'); this.value='';}">
+      <input type="text" placeholder="Ex: Como posso investir 1000 reais?" onkeydown="if(event.key==='Enter'){alert('IA Simulada: Diversifique entre renda fixa, ações, FIIs e criptomoedas. Reinvista lucros e mantenha reservas.'); this.value='';}">
     </div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
-  <p>©2026 Educação Financeira Completa • Todos os direitos reservados</p>
+  <p>©2026 Educação Financeira Interativa • Todos os direitos reservados</p>
   <p>Contato: contato@educacaofinanceira.com</p>
 </footer>
+
+<script>
+// Coins falling animation
+const coinsContainer = document.getElementById('coins-container');
+for(let i=0;i<20;i++){
+  let coin = document.createElement('div');
+  coin.className = 'coin';
+  coin.style.left = Math.random()*100+'vw';
+  coin.style.animationDuration = 3+Math.random()*3+'s';
+  coinsContainer.appendChild(coin);
+}
+
+// Simulador
+function simulate(){
+  let P = parseFloat(document.getElementById('initial').value);
+  let r = parseFloat(document.getElementById('rate').value)/100;
+  let n = parseInt(document.getElementById('months').value);
+  if(isNaN(P)||isNaN(r)||isNaN(n)){alert('Preencha todos os campos corretamente!');return;}
+  let finalAmount = P*Math.pow(1+r,n);
+  document.getElementById('result').innerText = 'Valor final aproximado: R$ '+finalAmount.toFixed(2);
+}
+</script>
 
 </body>
 </html>
