@@ -2,209 +2,136 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Inglês na Sua Mão</title>
+<title>Inglês na Sua Mão • Global English School</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --gold:#ffd700;
-  --dark:#060a1f;
-  --card:#0b102d;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(180deg,#080c22,#0a1a4f);
-  color:#fff;
-}
-header{
-  background:var(--dark);
-  padding:40px 20px;
-  text-align:center;
-}
-header h1{margin:0;font-size:40px}
-header p{opacity:.8}
-
-section{
-  max-width:1300px;
-  margin:50px auto;
-  padding:20px;
-}
-.card{
-  background:var(--card);
-  border-radius:24px;
-  padding:30px;
-  margin-bottom:30px;
-  animation:fadeUp .8s ease;
-}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
+*{box-sizing:border-box;font-family:Inter,sans-serif}
+body{margin:0;background:linear-gradient(180deg,#080c22,#0a1a4f);color:#fff}
+header{position:sticky;top:0;background:#080c22;border-bottom:1px solid rgba(255,255,255,.1)}
+.nav{max-width:1400px;margin:auto;padding:20px;display:flex;justify-content:space-between}
+.nav a{color:#fff;text-decoration:none;margin-left:20px}
+.container{max-width:1400px;margin:auto;padding:40px 20px}
+.section{background:#0c1233;border-radius:30px;padding:50px;margin-bottom:60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.card{background:#0b102d;border-radius:22px;padding:25px}
 .hidden{display:none}
-
-button,input{
-  width:100%;
-  padding:15px;
-  border-radius:14px;
-  border:none;
-  margin-top:12px;
-}
-button{
-  background:linear-gradient(90deg,var(--gold),#ffb700);
-  font-weight:bold;
-  cursor:pointer;
-  transition:.3s;
-}
-button:hover{transform:scale(1.03)}
-
-iframe{
-  width:100%;
-  border-radius:14px;
-  margin-top:10px;
-}
-.badge{
-  display:inline-block;
-  background:var(--gold);
-  color:#000;
-  padding:6px 16px;
-  border-radius:20px;
-  font-weight:bold;
-  margin-bottom:10px;
-}
-.module{
-  margin-top:25px;
-}
-.module h3{
-  cursor:pointer;
-  background:#101754;
-  padding:16px;
-  border-radius:16px;
-}
-.lesson{
-  padding:20px;
-  margin-top:15px;
-  background:#121a55;
-  border-radius:14px;
-}
-.lesson p{opacity:.85}
+iframe{width:100%;border-radius:14px}
+input,button{width:100%;padding:16px;border-radius:14px;border:none;margin-top:12px}
+button{background:#ffd700;font-weight:700;cursor:pointer}
+.price{font-size:34px;color:#ffd700;font-weight:900}
+.badge{background:#ffd700;color:#000;padding:6px 14px;border-radius:20px;display:inline-block}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>🌍 Inglês na Sua Mão</h1>
-  <p>Uma plataforma moderna para aprender inglês de verdade</p>
+  <div class="nav">
+    <strong>🌍 Inglês na Sua Mão</strong>
+    <div>
+      <a href="#planos">Planos</a>
+      <a href="#curso">Curso</a>
+    </div>
+  </div>
 </header>
 
-<section class="card">
-<h2>🔑 Liberar acesso</h2>
-<input id="codigo" placeholder="Digite o código do plano">
-<button onclick="liberar()">Liberar curso</button>
-<p id="msg"></p>
-</section>
+<div class="container">
 
-<section class="card">
-<h2>🎁 Aulas Grátis</h2>
-<div class="lesson">
-  <h4>Greetings</h4>
-  <iframe height="220" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe>
-  <p>Hello • Hi • Good Morning</p>
+<!-- PLANOS -->
+<div id="planos" class="section">
+<h2>💳 Planos</h2>
+<div class="grid">
+  <div class="card">
+    <span class="badge">Grátis</span>
+    <p>Aulas iniciais liberadas</p>
+  </div>
+  <div class="card">
+    <span class="badge">Básico</span>
+    <p class="price">R$ 49,90</p>
+  </div>
+  <div class="card">
+    <span class="badge">Intermediário</span>
+    <p class="price">R$ 99,90</p>
+  </div>
+  <div class="card">
+    <span class="badge">Avançado</span>
+    <p class="price">R$ 199,90</p>
+  </div>
 </div>
-</section>
+</div>
 
-<section id="curso" class="hidden">
+<!-- LIBERAÇÃO -->
+<div class="section">
+<h2>🔑 Liberar Plano</h2>
+<input id="codigo" placeholder="Digite o código recebido após o pagamento">
+<button onclick="liberarPlano()">Liberar acesso</button>
+<p id="msg"></p>
+</div>
+
+<!-- CURSO -->
+<div id="curso" class="section">
+<h2>📚 Aulas</h2>
+
+<!-- GRÁTIS -->
+<div class="card">
+<h3>🎁 Aula Grátis</h3>
+<iframe height="200" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe>
+<p>Hello • Hi • Good Morning</p>
+</div>
 
 <!-- BÁSICO -->
 <div id="basico" class="card hidden">
-<span class="badge">Plano Básico</span>
-
-<div class="module">
-<h3 onclick="toggle(this)">📘 Módulo Básico</h3>
-<div class="lesson hidden">
-<iframe height="220" src="https://www.youtube.com/embed/0Fz5L5n5ZlM"></iframe>
-<p>Verbo To Be</p>
+<h3>📘 Básico</h3>
+<iframe height="200" src="https://www.youtube.com/embed/0Fz5L5n5ZlM"></iframe>
+<p>Verbo To Be • Frases simples</p>
 <p>Atividade: I ___ a student</p>
 </div>
 
-<div class="lesson hidden">
-<iframe height="220" src="https://www.youtube.com/embed/7R3zW8jXq6I"></iframe>
-<p>Frases simples</p>
-<p>Atividade: complete frases</p>
-</div>
-</div>
-</div>
-
-<!-- INTER -->
+<!-- INTERMEDIÁRIO -->
 <div id="inter" class="card hidden">
-<span class="badge">Plano Intermediário</span>
-
-<div class="module">
-<h3 onclick="toggle(this)">📗 Módulo Intermediário</h3>
-<div class="lesson hidden">
-<iframe height="220" src="https://www.youtube.com/embed/HS24PywYlxM"></iframe>
+<h3>📗 Intermediário</h3>
+<iframe height="200" src="https://www.youtube.com/embed/HS24PywYlxM"></iframe>
 <p>Conversação diária</p>
-</div>
-
-<div class="lesson hidden">
-<iframe height="220" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe>
-<p>Passado simples</p>
-</div>
-</div>
+<p>Atividade: frase no passado</p>
 </div>
 
 <!-- AVANÇADO -->
-<div id="avancado" class="card hidden">
-<span class="badge">Plano Avançado</span>
-
-<div class="module">
-<h3 onclick="toggle(this)">📕 Módulo Avançado</h3>
-<div class="lesson hidden">
-<iframe height="220" src="https://www.youtube.com/embed/KZpYtQz5jJc"></iframe>
-<p>Fluência</p>
+<div id="avanc" class="card hidden">
+<h3>📕 Avançado</h3>
+<iframe height="200" src="https://www.youtube.com/embed/KZpYtQz5jJc"></iframe>
+<p>Fluência e inglês profissional</p>
+<p>Atividade: texto sobre futuro</p>
 </div>
 
-<div class="lesson hidden">
-<iframe height="220" src="https://www.youtube.com/embed/HS24PywYlxM"></iframe>
-<p>Inglês profissional</p>
-</div>
-</div>
 </div>
 
-</section>
+</div>
 
 <script>
-const codigos={
+const planos={
   "BASICO2026":"basico",
   "INTER2026":"inter",
-  "AVANC2026":"avancado"
-}
+  "AVANC2026":"avanc"
+};
 
-function liberar(){
-  const c=document.getElementById("codigo").value.toUpperCase()
-  if(codigos[c]){
-    localStorage.setItem("plano",codigos[c])
-    mostrar(codigos[c])
-    document.getElementById("msg").innerText="✅ Curso liberado!"
+function liberarPlano(){
+  const c=document.getElementById("codigo").value.toUpperCase();
+  const msg=document.getElementById("msg");
+  if(planos[c]){
+    document.getElementById(planos[c]).classList.remove("hidden");
+    localStorage.setItem("plano",planos[c]);
+    msg.innerText="✅ Plano liberado com sucesso!";
   }else{
-    document.getElementById("msg").innerText="❌ Código inválido"
+    msg.innerText="❌ Código inválido";
   }
 }
 
-function mostrar(plano){
-  document.getElementById("curso").classList.remove("hidden")
-  document.getElementById(plano).classList.remove("hidden")
+const salvo=localStorage.getItem("plano");
+if(salvo){
+  document.getElementById(salvo).classList.remove("hidden");
 }
-
-function toggle(el){
-  const lessons=el.parentElement.querySelectorAll(".lesson")
-  lessons.forEach(l=>l.classList.toggle("hidden"))
-}
-
-const salvo=localStorage.getItem("plano")
-if(salvo){mostrar(salvo)}
 </script>
 
 </body>
