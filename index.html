@@ -2,15 +2,15 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Inglês na Sua Mão | Plataforma Premium</title>
+<title>Inglês na Sua Mão | Plataforma</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 *{box-sizing:border-box;font-family:'Segoe UI',Arial}
 body{
   margin:0;
-  min-height:100vh;
   background:linear-gradient(135deg,#0a3cff,#1e90ff);
+  min-height:100vh;
 }
 .main{max-width:1100px;margin:auto;padding:30px}
 header{text-align:center;color:#fff;margin-bottom:30px}
@@ -24,21 +24,7 @@ header p{opacity:.9}
   box-shadow:0 25px 50px rgba(0,0,0,.25);
 }
 
-h2{color:#0a3cff;margin-top:0}
-
-button{
-  width:100%;
-  padding:14px;
-  margin:10px 0;
-  border-radius:10px;
-  border:none;
-  font-size:15px;
-  font-weight:600;
-  cursor:pointer;
-  background:#0a3cff;
-  color:#fff;
-}
-button:hover{opacity:.9}
+h2{color:#0a3cff}
 
 .plan{
   border:1px solid #eee;
@@ -47,7 +33,19 @@ button:hover{opacity:.9}
   margin:20px 0;
 }
 
-.lock{opacity:.45}
+.lock{opacity:.5}
+
+button{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:none;
+  background:#0a3cff;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:10px;
+}
 
 .pix{
   background:#f4f6f8;
@@ -67,7 +65,7 @@ footer{
   text-align:center;
   color:#fff;
   margin-top:30px;
-  opacity:.8;
+  opacity:.85;
 }
 </style>
 </head>
@@ -78,47 +76,64 @@ footer{
 
 <header>
   <h1>Inglês na Sua Mão</h1>
-  <p>Do zero à fluência, no seu ritmo</p>
+  <p>Aprenda inglês do zero à fluência</p>
 </header>
 
 <div class="card">
 
-<h2>🎁 Aula Grátis</h2>
+<!-- AULA GRÁTIS -->
+<h2>🎁 Aula Gratuita</h2>
 <div class="plan">
   <h3>Aula 1 – Introdução ao Inglês</h3>
-  <iframe height="315" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+  <iframe height="315"
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    allowfullscreen>
+  </iframe>
 </div>
 
-<h2>🔒 Conteúdos Premium</h2>
+<!-- PLANOS -->
+<h2>🔒 Planos Premium</h2>
 
 <div class="plan lock">
-  <h3>📘 Plano Básico — R$ 49,90</h3>
-  <p>✔️ Cumprimentos<br>✔️ Verb To Be<br>✔️ Frases básicas</p>
+  <h3>📘 Básico — R$ 49,90</h3>
+  <p>
+    ✔️ Cumprimentos<br>
+    ✔️ Verb To Be<br>
+    ✔️ Frases básicas
+  </p>
   <div class="pix">
     <strong>PIX:</strong><br>
     59548d60-a5b8-434d-9590-86244460d7cc
   </div>
-  <button onclick="liberar('basico')">Já paguei</button>
+  <button onclick="pago('Básico')">Já paguei</button>
 </div>
 
 <div class="plan lock">
-  <h3>📗 Plano Intermediário — R$ 99,90</h3>
-  <p>✔️ Tudo do Básico<br>✔️ Conversação<br>✔️ Presente e Passado</p>
+  <h3>📗 Intermediário — R$ 99,90</h3>
+  <p>
+    ✔️ Tudo do Básico<br>
+    ✔️ Conversação<br>
+    ✔️ Presente e Passado
+  </p>
   <div class="pix">
     <strong>PIX:</strong><br>
     59548d60-a5b8-434d-9590-86244460d7cc
   </div>
-  <button onclick="liberar('intermediario')">Já paguei</button>
+  <button onclick="pago('Intermediário')">Já paguei</button>
 </div>
 
 <div class="plan lock">
-  <h3>📕 Plano Avançado — R$ 149,90</h3>
-  <p>✔️ Tudo dos planos anteriores<br>✔️ Fluência<br>✔️ Situações reais</p>
+  <h3>📕 Avançado — R$ 149,90</h3>
+  <p>
+    ✔️ Tudo dos planos anteriores<br>
+    ✔️ Fluência<br>
+    ✔️ Situações reais
+  </p>
   <div class="pix">
     <strong>PIX:</strong><br>
     59548d60-a5b8-434d-9590-86244460d7cc
   </div>
-  <button onclick="liberar('avancado')">Já paguei</button>
+  <button onclick="pago('Avançado')">Já paguei</button>
 </div>
 
 </div>
@@ -130,10 +145,10 @@ footer{
 </div>
 
 <script>
-function liberar(plano){
+function pago(plano){
   alert(
-    "Plano " + plano.toUpperCase() +
-    " liberado!\n(Substitua este alerta por liberação real depois)"
+    "Pagamento do plano " + plano +
+    " confirmado!\n\n(Depois você pode ligar isso a um sistema automático.)"
   );
 }
 </script>
