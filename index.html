@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Inglês na Sua Mão • Plataforma Profissional</title>
+<title>Inglês na Sua Mão • Escola Digital</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -10,155 +10,215 @@
 *{box-sizing:border-box;font-family:Poppins,sans-serif}
 body{
   margin:0;
-  background:#0b102a;
+  background:linear-gradient(160deg,#0a0f2c,#0b3cff);
   color:#fff;
 }
 .container{max-width:1400px;margin:auto;padding:40px 20px}
-.card{
-  background:#12183d;
-  border-radius:22px;
-  padding:30px;
-  margin-bottom:40px;
-  box-shadow:0 25px 80px rgba(0,0,0,.6)
+.section{
+  background:rgba(255,255,255,.08);
+  border-radius:28px;
+  padding:40px;
+  margin-bottom:60px;
+  box-shadow:0 30px 90px rgba(0,0,0,.5);
 }
 h1,h2,h3{margin-top:0}
+p{opacity:.9}
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px
 }
-.video{
-  background:#0c1133;
-  border-radius:18px;
-  padding:15px;
+.card{
+  background:#0c1238;
+  border-radius:22px;
+  padding:25px;
   position:relative
 }
-iframe{width:100%;border-radius:14px}
-.locked::after{
-  content:"Plano necessário";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+iframe{width:100%;border-radius:16px}
+.price{
+  font-size:34px;
   font-weight:700;
-  font-size:18px;
+  color:#ffd700
 }
 button,input{
   width:100%;
-  padding:14px;
+  padding:15px;
   border-radius:14px;
   border:none;
-  margin-top:10px;
+  margin-top:12px;
   font-weight:600
 }
 button{
   background:linear-gradient(90deg,#ffd700,#ffb700);
   cursor:pointer
 }
-footer{text-align:center;opacity:.7;margin:60px 0}
+.locked::after{
+  content:"Conteúdo exclusivo do plano";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:700;
+}
+footer{text-align:center;opacity:.7;margin:80px 0}
 
 /* IA */
 #ai{
   position:fixed;
   bottom:20px;
   right:20px;
-  width:300px;
-  background:#12183d;
-  border-radius:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  width:320px;
+  background:#0c1238;
+  border-radius:22px;
+  box-shadow:0 25px 70px rgba(0,0,0,.6);
   overflow:hidden
 }
 #ai h3{
+  margin:0;
   background:#ffd700;
   color:#000;
-  margin:0;
-  padding:10px;
+  padding:12px;
   font-size:16px
 }
 #chat{
   height:220px;
-  padding:10px;
+  padding:12px;
   overflow:auto;
   font-size:14px
 }
-#chat p{margin:6px 0}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-<!-- TOPO -->
-<div class="card" style="text-align:center">
+<!-- HERO -->
+<div class="section" style="text-align:center">
   <h1>🇺🇸 Inglês <span style="color:#ffd700">na Sua Mão</span></h1>
-  <p>Plataforma profissional de ensino de inglês • Básico ao Avançado</p>
+  <p>Uma plataforma moderna de ensino de inglês, com método prático, tecnologia e fluência real.</p>
 </div>
 
-<!-- AULAS GRÁTIS -->
-<div class="card">
-  <h2>🎁 Aulas Gratuitas</h2>
+<!-- SOBRE -->
+<div class="section">
+  <h2>📚 O que você vai aprender</h2>
   <div class="grid">
-    <div class="video">
-      <strong>Inglês do Zero</strong>
-      <iframe height="200" src="https://www.youtube.com/embed/9JwK4oG3j2A"></iframe>
-    </div>
-    <div class="video">
-      <strong>Palavras Básicas</strong>
-      <iframe height="200" src="https://www.youtube.com/embed/8u8i7oE8LZ8"></iframe>
-    </div>
-    <div class="video">
-      <strong>Frases do Dia a Dia</strong>
-      <iframe height="200" src="https://www.youtube.com/embed/7R3zW8jXq6I"></iframe>
-    </div>
+    <div class="card">✔️ Vocabulário do dia a dia</div>
+    <div class="card">✔️ Frases usadas por nativos</div>
+    <div class="card">✔️ Conversação real</div>
+    <div class="card">✔️ Inglês para trabalho e viagem</div>
+    <div class="card">✔️ Listening e pronúncia</div>
+    <div class="card">✔️ Fluência passo a passo</div>
   </div>
 </div>
 
-<!-- LIBERAÇÃO -->
-<div class="card">
+<!-- PLANOS -->
+<div class="section">
+  <h2>💳 Planos e Valores</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>📘 Básico</h3>
+      <p class="price">R$ 49,90</p>
+      <ul>
+        <li>Inglês do zero</li>
+        <li>+30 aulas</li>
+        <li>Vocabulário básico</li>
+        <li>Frases simples</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📗 Intermediário</h3>
+      <p class="price">R$ 99,90</p>
+      <ul>
+        <li>+80 aulas</li>
+        <li>Conversação</li>
+        <li>Inglês no trabalho</li>
+        <li>Atividades práticas</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📕 Avançado</h3>
+      <p class="price">R$ 199,90</p>
+      <ul>
+        <li>Acesso total</li>
+        <li>Fluência</li>
+        <li>Phrasal verbs</li>
+        <li>Entrevistas e viagens</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- LIBERAR -->
+<div class="section">
   <h2>🔑 Liberar Plano</h2>
-  <input id="code" placeholder="Digite o código do seu plano">
+  <input id="code" placeholder="Digite o código recebido após o pagamento">
   <button onclick="liberar()">Liberar acesso</button>
 </div>
 
-<!-- PLANO BÁSICO -->
-<div id="basico" class="card">
+<!-- AULAS -->
+<div id="basico" class="section">
   <h2>📘 Plano Básico</h2>
   <div class="grid">
-    <div class="video locked"><strong>Alfabeto</strong><iframe height="200" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe></div>
-    <div class="video locked"><strong>Verb To Be</strong><iframe height="200" src="https://www.youtube.com/embed/2c8kJ1pXnQk"></iframe></div>
+    <div class="card locked">
+      <h4>Alphabet & Pronunciation</h4>
+      <iframe height="200" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe>
+      <p>Hello • My name is • Nice to meet you</p>
+    </div>
+    <div class="card locked">
+      <h4>Verb To Be</h4>
+      <iframe height="200" src="https://www.youtube.com/embed/2c8kJ1pXnQk"></iframe>
+      <p>I am • You are • He is</p>
+    </div>
   </div>
 </div>
 
-<!-- INTER -->
-<div id="inter" class="card">
+<div id="inter" class="section">
   <h2>📗 Plano Intermediário</h2>
   <div class="grid">
-    <div class="video locked"><strong>Present Simple</strong><iframe height="200" src="https://www.youtube.com/embed/U3X4sOe5z1k"></iframe></div>
-    <div class="video locked"><strong>Conversação</strong><iframe height="200" src="https://www.youtube.com/embed/4K6lY3kP0zE"></iframe></div>
+    <div class="card locked">
+      <h4>Present & Past</h4>
+      <iframe height="200" src="https://www.youtube.com/embed/U3X4sOe5z1k"></iframe>
+      <p>I work • I worked</p>
+    </div>
+    <div class="card locked">
+      <h4>Daily Conversations</h4>
+      <iframe height="200" src="https://www.youtube.com/embed/4K6lY3kP0zE"></iframe>
+      <p>How was your day?</p>
+    </div>
   </div>
 </div>
 
-<!-- AVANÇADO -->
-<div id="avanc" class="card">
+<div id="avanc" class="section">
   <h2>📕 Plano Avançado</h2>
   <div class="grid">
-    <div class="video locked"><strong>Phrasal Verbs</strong><iframe height="200" src="https://www.youtube.com/embed/FK2yJ3y8K1U"></iframe></div>
-    <div class="video locked"><strong>Fluência</strong><iframe height="200" src="https://www.youtube.com/embed/Jh7P0k3zR8I"></iframe></div>
+    <div class="card locked">
+      <h4>Phrasal Verbs</h4>
+      <iframe height="200" src="https://www.youtube.com/embed/FK2yJ3y8K1U"></iframe>
+      <p>Give up • Look for • Carry on</p>
+    </div>
+    <div class="card locked">
+      <h4>Fluency & Listening</h4>
+      <iframe height="200" src="https://www.youtube.com/embed/Jh7P0k3zR8I"></iframe>
+      <p>Real conversations with natives</p>
+    </div>
   </div>
 </div>
 
-<footer>© 2026 Inglês na Sua Mão • Golden Circular</footer>
+<footer>© 2026 Inglês na Sua Mão • Plataforma Educacional</footer>
 </div>
 
-<!-- IA AUXILIAR -->
+<!-- IA -->
 <div id="ai">
   <h3>🤖 IA Auxiliar</h3>
-  <div id="chat">
-    <p><b>IA:</b> Olá! Pergunte algo sobre o curso 😊</p>
-  </div>
-  <input id="q" placeholder="Digite sua pergunta…" onkeydown="if(event.key==='Enter')ask()">
+  <div id="chat"><p><b>IA:</b> Ask me anything about English 😊</p></div>
+  <input id="q" placeholder="Type your question..." onkeydown="if(event.key==='Enter')ask()">
 </div>
 
 <script>
@@ -167,25 +227,22 @@ const codes={
   INTER2026:["basico","inter"],
   AVANC2026:["basico","inter","avanc"]
 }
-
 function liberar(){
   const c=document.getElementById("code").value.toUpperCase()
   if(!codes[c]) return alert("Código inválido")
   codes[c].forEach(id=>{
-    document.querySelectorAll("#"+id+" .locked").forEach(v=>v.classList.remove("locked"))
+    document.querySelectorAll("#"+id+" .locked").forEach(el=>el.classList.remove("locked"))
   })
   alert("Plano liberado com sucesso!")
 }
-
-/* IA SIMULADA */
 function ask(){
   const q=document.getElementById("q")
   const chat=document.getElementById("chat")
-  chat.innerHTML+=`<p><b>Você:</b> ${q.value}</p>`
-  let r="Esse conteúdo faz parte do curso."
-  if(q.value.toLowerCase().includes("plano")) r="Cada plano libera aulas diferentes conforme o nível."
-  if(q.value.toLowerCase().includes("básico")) r="O plano básico ensina o inglês do zero."
-  if(q.value.toLowerCase().includes("avançado")) r="O plano avançado foca em fluência e situações reais."
+  chat.innerHTML+=`<p><b>You:</b> ${q.value}</p>`
+  let r="This course helps you speak English with confidence."
+  if(q.value.toLowerCase().includes("basic")) r="The Basic plan teaches English from zero."
+  if(q.value.toLowerCase().includes("price")) r="Each plan has a different price and level."
+  if(q.value.toLowerCase().includes("fluency")) r="Fluency comes with practice and advanced lessons."
   chat.innerHTML+=`<p><b>IA:</b> ${r}</p>`
   chat.scrollTop=chat.scrollHeight
   q.value=""
