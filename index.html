@@ -8,13 +8,13 @@
 <style>
 body{
   margin:0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(180deg,#eef3f9,#ffffff);
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:linear-gradient(180deg,#eef3f9,#ffffff);
   color:#333;
 }
 
 header{
-  background: linear-gradient(135deg,#1e90ff,#4facfe);
+  background:linear-gradient(135deg,#1e90ff,#4facfe);
   color:#fff;
   text-align:center;
   padding:60px 20px;
@@ -22,7 +22,6 @@ header{
 
 header h1{
   font-size:36px;
-  margin-bottom:10px;
 }
 
 section{
@@ -41,17 +40,10 @@ section{
 
 h2{
   color:#1e90ff;
-  margin-bottom:15px;
 }
 
-.btn{
-  display:inline-block;
-  background:linear-gradient(135deg,#1e90ff,#4facfe);
-  color:#fff;
-  padding:14px 30px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
+ul{
+  padding-left:20px;
 }
 
 footer{
@@ -59,7 +51,62 @@ footer{
   color:#fff;
   text-align:center;
   padding:20px;
-  margin-top:40px;
+}
+
+/* IA */
+#chatbot{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:320px;
+  font-size:14px;
+  z-index:9999;
+}
+
+#chat-header{
+  background:linear-gradient(135deg,#1e90ff,#4facfe);
+  color:#fff;
+  padding:12px;
+  border-radius:14px 14px 0 0;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+#chat-body{
+  display:none;
+  background:#fff;
+  height:280px;
+  overflow-y:auto;
+  padding:10px;
+  border:1px solid #ddd;
+}
+
+#chat-input{
+  display:flex;
+}
+
+#chat-input input{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-top:1px solid #ddd;
+}
+
+#chat-input button{
+  background:#1e90ff;
+  color:#fff;
+  border:none;
+  padding:10px 15px;
+}
+
+.bot{
+  color:#1e90ff;
+  margin:6px 0;
+}
+
+.user{
+  text-align:right;
+  margin:6px 0;
 }
 </style>
 </head>
@@ -75,26 +122,27 @@ footer{
 <div class="card">
 <h2>Sobre o Curso</h2>
 <p>
-Curso de inglês simples, prático e direto ao ponto, com apoio de uma IA Professora
-para ajudar o aluno a aprender vocabulário, frases e conversação no dia a dia.
+Curso de inglês simples e prático para quem quer aprender do zero.
+Com apoio de uma IA Professora, o aluno aprende vocabulário,
+frases e conversação no dia a dia.
 </p>
 </div>
 
 <div class="card">
 <h2>Benefícios</h2>
 <ul>
-<li>Aulas simples</li>
+<li>Inglês do básico</li>
 <li>Aprenda no seu ritmo</li>
 <li>IA Professora 24h</li>
-<li>Conteúdo prático</li>
+<li>Aulas simples e práticas</li>
 </ul>
 </div>
 
 <div class="card">
 <h2>Planos</h2>
-<p>Básico: R$ 120 / mês</p>
-<p>Completo: R$ 150 / mês</p>
-<p>Premium: R$ 200 / mês</p>
+<p>Plano Básico: R$ 120 / mês</p>
+<p>Plano Completo: R$ 150 / mês</p>
+<p>Plano Premium: R$ 200 / mês</p>
 </div>
 
 </section>
@@ -102,6 +150,54 @@ para ajudar o aluno a aprender vocabulário, frases e conversação no dia a dia
 <footer>
 © 2026 – Inglês na sua Mão
 </footer>
+
+<!-- IA PROFESSORA -->
+<div id="chatbot">
+  <div id="chat-header" onclick="toggleChat()">🤖 IA Professora</div>
+
+  <div id="chat-body">
+    <div class="bot">
+      Olá 👋 Eu sou sua IA Professora de inglês.<br>
+      Digite:<br>
+      <b>alfabeto</b>, <b>cumprimentos</b> ou <b>frases</b>
+    </div>
+  </div>
+
+  <div id="chat-input">
+    <input id="userMsg" placeholder="Digite aqui...">
+    <button onclick="sendMsg()">Enviar</button>
+  </div>
+</div>
+
+<script>
+function toggleChat(){
+  const chat = document.getElementById("chat-body");
+  chat.style.display = chat.style.display === "none" ? "block" : "none";
+}
+
+function sendMsg(){
+  const input = document.getElementById("userMsg");
+  const msg = input.value.toLowerCase();
+  if(!msg) return;
+
+  const chat = document.getElementById("chat-body");
+  chat.innerHTML += `<div class="user">${input.value}</div>`;
+
+  let response = "Digite: alfabeto, cumprimentos ou frases.";
+
+  if(msg.includes("alfabeto")){
+    response = "Alfabeto em inglês: A B C D E F G H I J.";
+  } else if(msg.includes("cumprimentos")){
+    response = "Cumprimentos: Hello = Olá | Hi = Oi | Good morning = Bom dia.";
+  } else if(msg.includes("frases")){
+    response = "Frase básica: My name is... = Meu nome é...";
+  }
+
+  chat.innerHTML += `<div class="bot">${response}</div>`;
+  chat.scrollTop = chat.scrollHeight;
+  input.value = "";
+}
+</script>
 
 </body>
 </html>
