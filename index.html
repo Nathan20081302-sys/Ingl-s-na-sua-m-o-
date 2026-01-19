@@ -8,25 +8,39 @@
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:#0a0f2c;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#060b24,#0a1a4f);
   color:#fff;
 }
 header{
-  background:#06091a;
-  padding:30px;
+  padding:40px;
   text-align:center;
+  background:#05091f;
 }
 section{
-  max-width:1100px;
-  margin:30px auto;
-  padding:20px;
+  max-width:1200px;
+  margin:60px auto;
+  padding:30px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
 }
 .card{
-  background:#10184a;
+  background:#0b102d;
+  border-radius:20px;
   padding:25px;
-  border-radius:18px;
-  margin-bottom:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.5);
+  animation:fadeUp .7s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+}
+.price{
+  font-size:34px;
+  font-weight:bold;
+  color:#ffd700;
 }
 button,input{
   width:100%;
@@ -36,18 +50,21 @@ button,input{
   margin-top:10px;
 }
 button{
-  background:#ffd700;
+  background:linear-gradient(90deg,#ffd700,#ffb700);
   font-weight:bold;
   cursor:pointer;
 }
-.hidden{display:none}
 iframe{
   width:100%;
-  border-radius:12px;
+  height:200px;
+  border-radius:14px;
   margin-top:10px;
 }
-.plan{
-  border:2px solid #ffd700;
+.hidden{display:none}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
@@ -56,71 +73,85 @@ iframe{
 
 <header>
   <h1>🌍 Inglês na Sua Mão</h1>
-  <p>Aprenda inglês do básico ao avançado</p>
+  <p>Plataforma moderna para aprender inglês na prática</p>
 </header>
 
-<section class="card">
-<h2>🎁 Aula Gratuita</h2>
-<iframe height="220" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe>
-<p>Hello, Hi, Good Morning</p>
+<section>
+<h2>🎯 Demonstração Gratuita</h2>
+<div class="card">
+<h3>Primeiras Palavras</h3>
+<iframe src="https://www.youtube.com/embed/0FL0G9OwKFk" allowfullscreen></iframe>
+<p>Hello • Hi • My name is</p>
+</div>
 </section>
 
-<section class="card">
+<section>
+<h2>💳 Planos</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Básico</h3>
+<p class="price">R$ 49,90</p>
+<p>Vocabulário • Frases • Pronúncia</p>
+</div>
+
+<div class="card">
+<h3>Intermediário</h3>
+<p class="price">R$ 99,90</p>
+<p>Conversação • Situações reais</p>
+</div>
+
+<div class="card">
+<h3>Avançado</h3>
+<p class="price">R$ 199,90</p>
+<p>Fluência • Inglês profissional</p>
+</div>
+
+</div>
+</section>
+
+<section>
 <h2>🔑 Liberar Curso</h2>
-<input id="codigo" placeholder="Digite o código do plano">
-<button onclick="liberar()">Liberar acesso</button>
-<p id="msg"></p>
+<input id="code" placeholder="Digite o código do plano">
+<button onclick="liberar()">Liberar Acesso</button>
 </section>
 
 <section id="curso" class="hidden">
+<h2>📚 Curso Liberado</h2>
 
-<div id="basico" class="card plan hidden">
-<h2>📘 Plano Básico</h2>
-<iframe height="220" src="https://www.youtube.com/embed/0Fz5L5n5ZlM"></iframe>
-<p>Verbo To Be</p>
+<div class="grid">
+
+<div class="card">
+<h3>Aula 1 – Cumprimentos</h3>
+<iframe src="https://www.youtube.com/embed/0FL0G9OwKFk" allowfullscreen></iframe>
+<p>Hello • How are you?</p>
 </div>
 
-<div id="intermediario" class="card plan hidden">
-<h2>📗 Plano Intermediário</h2>
-<iframe height="220" src="https://www.youtube.com/embed/HS24PywYlxM"></iframe>
-<p>Conversação diária</p>
+<div class="card">
+<h3>Aula 2 – Verbo To Be</h3>
+<iframe src="https://www.youtube.com/embed/4r8z3sT1X8k" allowfullscreen></iframe>
+<p>I am • You are • He is</p>
 </div>
 
-<div id="avancado" class="card plan hidden">
-<h2>📕 Plano Avançado</h2>
-<iframe height="220" src="https://www.youtube.com/embed/KZpYtQz5jJc"></iframe>
-<p>Inglês profissional</p>
+<div class="card">
+<h3>Aula 3 – Inglês do Dia a Dia</h3>
+<iframe src="https://www.youtube.com/embed/7R3zW8jXq6I" allowfullscreen></iframe>
+<p>Simple conversations</p>
 </div>
 
+</div>
 </section>
 
 <script>
-const codigos = {
-  "BASICO2026":"basico",
-  "INTER2026":"intermediario",
-  "AVANCADO2026":"avancado"
-};
-
 function liberar(){
-  const c = document.getElementById("codigo").value.toUpperCase();
-  const plano = codigos[c];
-
-  if(plano){
-    localStorage.setItem("plano",plano);
-    mostrar(plano);
-    document.getElementById("msg").innerText = "✅ Curso liberado!";
+  const c=document.getElementById("code").value.toUpperCase();
+  if(c==="BASICO2026"||c==="INTER2026"||c==="AVANC2026"){
+    document.getElementById("curso").classList.remove("hidden");
+    alert("Curso liberado com sucesso!");
   }else{
-    document.getElementById("msg").innerText = "❌ Código inválido";
+    alert("Código inválido");
   }
 }
-
-function mostrar(plano){
-  document.getElementById("curso").classList.remove("hidden");
-  document.getElementById(plano).classList.remove("hidden");
-}
-
-const salvo = localStorage.getItem("plano");
-if(salvo){ mostrar(salvo); }
 </script>
 
 </body>
