@@ -1,100 +1,27 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Inglês na Sua Mão</title>
+<title>Inglês na Sua Mão | Plataforma</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
-
-body{
-  background:#f4f4f4;
-  color:#333;
-}
-
-header{
-  background:#0a3cff;
-  color:white;
-  padding:40px 20px;
-  text-align:center;
-}
-
-header h1{
-  font-size:2.4em;
-}
-
-nav{
-  background:white;
-  padding:10px;
-  text-align:center;
-}
-
-nav a{
-  margin:0 10px;
-  text-decoration:none;
-  font-weight:bold;
-  color:#0a3cff;
-}
-
-section{
-  max-width:1000px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-h2{
-  color:#0a3cff;
-  margin-bottom:20px;
-}
-
-.card{
-  background:white;
-  padding:20px;
-  margin:15px 0;
-  border-radius:8px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.btn{
-  display:inline-block;
-  background:#0a3cff;
-  color:white;
-  padding:10px 18px;
-  border-radius:5px;
-  text-decoration:none;
-  margin-top:10px;
-}
-
-.whatsapp{
-  background:#25d366;
-}
-
-iframe{
-  width:100%;
-  border-radius:8px;
-}
-
-footer{
-  background:#222;
-  color:white;
-  text-align:center;
-  padding:20px;
-}
-
-@media(max-width:600px){
-  header h1{font-size:1.8em;}
-}
+body{font-family:Arial;background:#f4f4f4;margin:0}
+header{background:#0a3cff;color:#fff;padding:20px;text-align:center}
+.container{max-width:900px;margin:auto;padding:20px}
+.box{background:#fff;padding:20px;border-radius:8px;margin-bottom:20px}
+input,button,select{width:100%;padding:10px;margin:6px 0}
+button{background:#0a3cff;color:#fff;border:none;border-radius:5px}
+.hidden{display:none}
+.plan{border:1px solid #ddd;padding:15px;margin:10px 0;border-radius:5px}
+.lock{opacity:0.4}
+.pay{background:#00a650}
+.logout{background:#777}
 </style>
 </head>
 
@@ -102,94 +29,124 @@ footer{
 
 <header>
   <h1>Inglês na Sua Mão</h1>
-  <p>Aulas em vídeo com professor • Do zero à conversação</p>
+  <p>Área do Aluno • Pagamento Seguro</p>
 </header>
 
-<nav>
-  <a href="#sobre">Sobre</a>
-  <a href="#aulas">Aulas</a>
-  <a href="#aluno">Área do Aluno</a>
-  <a href="#pagamento">Pagamento</a>
-  <a href="#contato">Contato</a>
-</nav>
+<div class="container">
 
-<section id="sobre">
-  <h2>Sobre o Curso</h2>
-  <p>
-    O curso Inglês na Sua Mão foi criado para quem quer aprender inglês
-    de forma simples, prática e direta, com aulas em vídeo explicadas
-    por professor e conteúdo visual.
-  </p>
-</section>
+<!-- LOGIN -->
+<div class="box" id="loginBox">
+  <h2>Login / Cadastro</h2>
+  <input id="email" placeholder="Email">
+  <input id="senha" type="password" placeholder="Senha">
+  <button onclick="login()">Entrar</button>
+  <button onclick="registrar()">Criar Conta</button>
+</div>
 
-<section id="aulas">
-  <h2>Aulas em Vídeo</h2>
+<!-- ESCOLHA DE PLANO -->
+<div class="box hidden" id="pagamentoBox">
+  <h2>Escolha seu Plano</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>📘 Aula 1 – Cumprimentos</h3>
-      <p>Hello, Hi, Good Morning</p>
-    </div>
-
-    <div class="card">
-      <h3>📘 Aula 2 – Verb To Be</h3>
-      <p>Am, Is, Are</p>
-    </div>
-
-    <div class="card">
-      <h3>📘 Aula 3 – Frases do Dia a Dia</h3>
-      <p>Conversação básica</p>
-    </div>
+  <div class="plan">
+    📘 Básico – R$49,90  
+    <button class="pay" onclick="pagar('basico')">Pagar</button>
   </div>
-</section>
 
-<section id="aluno">
+  <div class="plan">
+    📗 Intermediário – R$99,90  
+    <button class="pay" onclick="pagar('intermediario')">Pagar</button>
+  </div>
+
+  <div class="plan">
+    📕 Avançado – R$149,90  
+    <button class="pay" onclick="pagar('avancado')">Pagar</button>
+  </div>
+</div>
+
+<!-- ÁREA DO ALUNO -->
+<div class="box hidden" id="alunoBox">
   <h2>Área do Aluno</h2>
+  <p id="planoAtivo"></p>
 
-  <div class="card">
-    <h3>🎥 Aula 1 – Cumprimentos</h3>
-    <!-- TROQUE O LINK PELO SEU VÍDEO -->
-    <iframe height="315"
-      src="https://www.youtube.com/embed/VIDEO_AQUI"
-      allowfullscreen>
-    </iframe>
-  </div>
+  <div id="conteudo"></div>
 
-  <div class="card">
-    <h3>🎥 Aula 2 – Verb To Be</h3>
-    <iframe height="315"
-      src="https://www.youtube.com/embed/VIDEO_AQUI"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
+  <button class="logout" onclick="logout()">Sair</button>
+</div>
 
-<section id="pagamento">
-  <h2>Formas de Pagamento</h2>
-  <div class="card">
-    <p>✔️ Pix</p>
-    <p>✔️ Cartão de Crédito</p>
-    <p>✔️ Cartão de Débito</p>
-    <p>✔️ Transferência Bancária</p>
-  </div>
-</section>
+</div>
 
-<section id="contato">
-  <h2>Contato</h2>
-  <div class="card">
-    <p><strong>WhatsApp:</strong> (11) 95495-7984</p>
-    <a class="btn whatsapp" 
-       href="https://wa.me/5511954957984" 
-       target="_blank">
-       Falar no WhatsApp
-    </a>
-  </div>
-</section>
+<script>
+// 🔥 CONFIG FIREBASE (TROQUE)
+firebase.initializeApp({
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO"
+});
 
-<footer>
-  <p>© 2026 Inglês na Sua Mão</p>
-  <p>Criado por Nathanael Rodrigues Brito</p>
-</footer>
+const auth = firebase.auth();
+const db = firebase.firestore();
+let usuarioAtual = null;
+
+function registrar(){
+  auth.createUserWithEmailAndPassword(email.value, senha.value)
+  .then(user=>{
+    db.collection("alunos").doc(user.user.uid).set({
+      plano:"nenhum"
+    });
+  });
+}
+
+function login(){
+  auth.signInWithEmailAndPassword(email.value, senha.value);
+}
+
+auth.onAuthStateChanged(user=>{
+  if(user){
+    usuarioAtual = user;
+    loginBox.classList.add("hidden");
+
+    db.collection("alunos").doc(user.uid).get()
+    .then(doc=>{
+      const plano = doc.data().plano;
+
+      if(plano === "nenhum"){
+        pagamentoBox.classList.remove("hidden");
+      } else {
+        mostrarConteudo(plano);
+      }
+    });
+  }
+});
+
+function pagar(plano){
+  alert(
+    "Pagamento iniciado para o plano: " + plano +
+    "\n\nAqui você conecta o Mercado Pago (Pix / Cartão)."
+  );
+
+  // SIMULA pagamento aprovado
+  db.collection("alunos").doc(usuarioAtual.uid).update({
+    plano: plano
+  }).then(()=>{
+    mostrarConteudo(plano);
+  });
+}
+
+function mostrarConteudo(plano){
+  pagamentoBox.classList.add("hidden");
+  alunoBox.classList.remove("hidden");
+  planoAtivo.innerText = "Plano ativo: " + plano;
+
+  conteudo.innerHTML = `
+    <div class="plan">🎓 Conteúdo liberado do plano ${plano}</div>
+  `;
+}
+
+function logout(){
+  auth.signOut();
+  location.reload();
+}
+</script>
 
 </body>
 </html>
