@@ -48,9 +48,7 @@ button{
 button:hover{opacity:.9}
 
 .social{display:flex;gap:10px}
-.social button{flex:1}
 .google{background:#db4437}
-.apple{background:#000}
 
 .plan{
   border:1px solid #eee;
@@ -58,7 +56,6 @@ button:hover{opacity:.9}
   padding:20px;
   margin:15px 0;
 }
-.plan.lock{opacity:.45}
 
 .pix{
   background:#f4f6f8;
@@ -89,7 +86,8 @@ footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
 
 <!-- LOGIN -->
 <div id="loginBox">
-  <h2>Entrar na plataforma</h2>
+  <h2>Entrar</h2>
+
   <input id="email" placeholder="Email">
   <input id="senha" type="password" placeholder="Senha">
 
@@ -98,10 +96,7 @@ footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
 
   <hr>
 
-  <div class="social">
-    <button class="google" onclick="loginGoogle()">Google</button>
-    <button class="apple" onclick="loginApple()">Apple</button>
-  </div>
+  <button class="google" onclick="loginGoogle()">Entrar com Google</button>
 </div>
 
 <!-- CONTEÚDO -->
@@ -145,27 +140,32 @@ footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
 </div>
 
 <script>
-firebase.initializeApp({
+/* 🔥 COLE AQUI OS DADOS DO SEU FIREBASE */
+const firebaseConfig = {
   apiKey: "SUA_API_KEY",
   authDomain: "SEU_PROJETO.firebaseapp.com",
   projectId: "SEU_PROJETO"
-});
+};
+/* 🔥 NÃO MEXA ABAIXO */
+firebase.initializeApp(firebaseConfig);
 
-const auth=firebase.auth();
-const db=firebase.firestore();
+const auth = firebase.auth();
+const db = firebase.firestore();
 
 function registrar(){
   auth.createUserWithEmailAndPassword(email.value,senha.value)
-  .then(u=>db.collection("alunos").doc(u.user.uid).set({plano:"gratis"}));
+  .then(u=>db.collection("alunos").doc(u.user.uid).set({plano:"gratis"}))
+  .catch(e=>alert(e.message));
 }
+
 function loginEmail(){
-  auth.signInWithEmailAndPassword(email.value,senha.value);
+  auth.signInWithEmailAndPassword(email.value,senha.value)
+  .catch(e=>alert(e.message));
 }
+
 function loginGoogle(){
-  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-}
-function loginApple(){
-  auth.signInWithPopup(new firebase.auth.OAuthProvider('apple.com'));
+  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  .catch(e=>alert(e.message));
 }
 
 auth.onAuthStateChanged(u=>{
@@ -174,7 +174,7 @@ auth.onAuthStateChanged(u=>{
     conteudoBox.classList.remove("hidden");
     db.collection("alunos").doc(u.uid).get().then(d=>{
       if(!d.exists) db.collection("alunos").doc(u.uid).set({plano:"gratis"});
-      mostrar(d.data()?.plano||"gratis");
+      mostrar(d.data()?.plano || "gratis");
     });
   }
 });
@@ -194,7 +194,10 @@ function mostrar(p){
   aulas.innerHTML=h;
 }
 
-function logout(){auth.signOut();location.reload();}
+function logout(){
+  auth.signOut();
+  location.reload();
+}
 </script>
 
 </body>
