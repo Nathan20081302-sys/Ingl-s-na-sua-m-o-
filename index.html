@@ -5,11 +5,6 @@
 <title>Inglês na Sua Mão | Plataforma Premium</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
 <style>
 *{box-sizing:border-box;font-family:'Segoe UI',Arial}
 body{
@@ -46,9 +41,6 @@ button{
   cursor:pointer;
 }
 button:hover{opacity:.9}
-
-.social{display:flex;gap:10px}
-.google{background:#db4437}
 
 .plan{
   border:1px solid #eee;
@@ -87,16 +79,11 @@ footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
 <!-- LOGIN -->
 <div id="loginBox">
   <h2>Entrar</h2>
-
   <input id="email" placeholder="Email">
   <input id="senha" type="password" placeholder="Senha">
 
-  <button onclick="loginEmail()">Entrar</button>
+  <button onclick="login()">Entrar</button>
   <button onclick="registrar()">Criar conta</button>
-
-  <hr>
-
-  <button class="google" onclick="loginGoogle()">Entrar com Google</button>
 </div>
 
 <!-- CONTEÚDO -->
@@ -140,64 +127,57 @@ footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
 </div>
 
 <script>
-/* 🔥 COLE AQUI OS DADOS DO SEU FIREBASE */
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJETO"
-};
-/* 🔥 NÃO MEXA ABAIXO */
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const db = firebase.firestore();
+let usuario = JSON.parse(localStorage.getItem("usuario"));
 
 function registrar(){
-  auth.createUserWithEmailAndPassword(email.value,senha.value)
-  .then(u=>db.collection("alunos").doc(u.user.uid).set({plano:"gratis"}))
-  .catch(e=>alert(e.message));
+  if(!email.value || !senha.value) return alert("Preencha tudo");
+  localStorage.setItem("usuario", JSON.stringify({
+    email: email.value,
+    plano: "gratis"
+  }));
+  carregar();
 }
 
-function loginEmail(){
-  auth.signInWithEmailAndPassword(email.value,senha.value)
-  .catch(e=>alert(e.message));
-}
-
-function loginGoogle(){
-  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-  .catch(e=>alert(e.message));
-}
-
-auth.onAuthStateChanged(u=>{
-  if(u){
-    loginBox.classList.add("hidden");
-    conteudoBox.classList.remove("hidden");
-    db.collection("alunos").doc(u.uid).get().then(d=>{
-      if(!d.exists) db.collection("alunos").doc(u.uid).set({plano:"gratis"});
-      mostrar(d.data()?.plano || "gratis");
-    });
+function login(){
+  let u = JSON.parse(localStorage.getItem("usuario"));
+  if(!u || u.email !== email.value){
+    alert("Conta não encontrada");
+    return;
   }
-});
+  carregar();
+}
+
+function carregar(){
+  loginBox.classList.add("hidden");
+  conteudoBox.classList.remove("hidden");
+  usuario = JSON.parse(localStorage.getItem("usuario"));
+  mostrar(usuario.plano);
+}
 
 function ativarPlano(p){
-  db.collection("alunos").doc(auth.currentUser.uid).set({plano:p});
+  usuario.plano = p;
+  localStorage.setItem("usuario", JSON.stringify(usuario));
   mostrar(p);
 }
 
 function mostrar(p){
-  planoTxt.innerText="Plano ativo: "+p;
-  let h=`<div class="plan"><h3>Aula 1 – Introdução</h3>
-  <iframe height="315" src="https://www.youtube.com/embed/VIDEO_ID"></iframe></div>`;
-  if(p!="gratis") h+=`<div class="plan"><h3>Verb To Be</h3></div>`;
-  if(p=="intermediario"||p=="avancado") h+=`<div class="plan"><h3>Conversação</h3></div>`;
-  if(p=="avancado") h+=`<div class="plan"><h3>Fluência</h3></div>`;
-  aulas.innerHTML=h;
+  planoTxt.innerText = "Plano ativo: " + p;
+  let h = `<div class="plan">
+    <h3>Aula 1 – Introdução</h3>
+    <iframe height="315" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+  </div>`;
+  if(p !== "gratis") h += `<div class="plan"><h3>Verb To Be</h3></div>`;
+  if(p === "intermediario" || p === "avancado") h += `<div class="plan"><h3>Conversação</h3></div>`;
+  if(p === "avancado") h += `<div class="plan"><h3>Fluência</h3></div>`;
+  aulas.innerHTML = h;
 }
 
 function logout(){
-  auth.signOut();
+  localStorage.removeItem("usuario");
   location.reload();
 }
+
+if(usuario) carregar();
 </script>
 
 </body>
