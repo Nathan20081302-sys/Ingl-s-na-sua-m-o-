@@ -2,167 +2,144 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Inglês na Sua Mão • Plataforma Completa</title>
+<title>Inglês na Sua Mão • Curso Completo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{
-  margin:0;
-  background:linear-gradient(160deg,#050b2e,#0a3cff);
-  color:#fff;
-}
-.wrapper{max-width:1300px;margin:auto;padding:40px 20px}
-
-/* HERO */
-.hero{text-align:center;margin-bottom:60px}
-.hero h1{font-size:50px;margin:0}
-.hero span{
-  background:linear-gradient(90deg,#ffd700,#ffb700);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.hero p{max-width:820px;margin:20px auto;font-size:18px;opacity:.85}
-
-/* SECTIONS */
-.section{
+body{margin:0;background:linear-gradient(160deg,#0b0f3a,#0a4cff);color:#fff}
+.container{max-width:1300px;margin:auto;padding:40px 20px}
+.card{
   background:rgba(255,255,255,.08);
-  backdrop-filter:blur(18px);
-  border-radius:28px;
-  padding:35px;
-  margin-bottom:50px;
-  box-shadow:0 30px 80px rgba(0,0,0,.45);
-}
-.section h2{margin-top:0;font-size:30px}
-
-/* BUTTONS & INPUT */
-button,input{
-  padding:14px;
-  border-radius:14px;
-  border:none;
-  font-weight:600;
-}
-button{
-  background:linear-gradient(90deg,#ffd700,#ffb700);
-  cursor:pointer;
-}
-input{width:100%;margin-top:10px}
-
-/* PAYMENT */
-.payment{
-  display:none;
-  background:rgba(255,255,255,.1);
-  padding:14px;
-  border-radius:14px;
-  margin-top:10px;
-  word-break:break-all;
-}
-
-/* PLANS */
-.plans{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
-}
-.plan{
-  background:linear-gradient(160deg,#030b3d,#0a1fff);
+  backdrop-filter:blur(16px);
   border-radius:26px;
   padding:30px;
-  position:relative;
+  margin-bottom:45px;
+  box-shadow:0 25px 70px rgba(0,0,0,.45)
 }
-.price{font-size:30px;color:#ffd700;font-weight:700}
-
-/* STUDENT AREA */
-.lock{opacity:.35}
+h1,h2,h3{margin-top:0}
 .videos{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+  gap:20px
 }
-iframe{width:100%;border-radius:16px}
-
-/* AI */
-.chat{
-  background:#000;
-  border-radius:18px;
+.video{background:rgba(0,0,0,.35);border-radius:18px;padding:15px}
+iframe{width:100%;border-radius:14px}
+.lock{opacity:.3;filter:blur(2px);pointer-events:none}
+input,button{
+  width:100%;
   padding:15px;
+  border-radius:14px;
+  border:none;
+  font-weight:600;
+  margin-top:12px
 }
-.chat-log{
-  max-height:220px;
-  overflow:auto;
-  font-size:14px;
-}
-
-/* FOOTER */
-footer{text-align:center;opacity:.7;margin-top:60px}
+button{background:linear-gradient(90deg,#ffd700,#ffb700);cursor:pointer}
+footer{text-align:center;opacity:.7;margin:60px 0}
+ul{line-height:1.8}
 </style>
 </head>
 
 <body>
+<div class="container">
 
-<div class="wrapper">
-
-<!-- HERO -->
-<div class="hero">
-  <h1>Inglês <span>na Sua Mão</span></h1>
-  <p>Uma plataforma completa, moderna e organizada para você aprender inglês do zero até a fluência.</p>
+<!-- TOPO -->
+<div class="card" style="text-align:center">
+  <h1>🇺🇸 Inglês <span style="color:#ffd700">na Sua Mão</span></h1>
+  <p>Curso completo do zero ao avançado com aulas práticas, frases reais e muita conversação.</p>
 </div>
 
-<!-- PAGAMENTO -->
-<div class="section">
-  <h2>💳 Pagamento</h2>
-  <p>Após o pagamento, você receberá um <strong>código de liberação</strong>.</p>
-  <strong>PIX:</strong><br>
-  59548d60-a5b8-434d-9590-86244460d7cc
+<!-- AULAS GRÁTIS -->
+<div class="card">
+  <h2>🎁 Aulas Gratuitas (Demonstração)</h2>
+  <ul>
+    <li>Hello = Olá</li>
+    <li>My name is… = Meu nome é…</li>
+    <li>How are you? = Como você está?</li>
+  </ul>
+
+  <div class="videos">
+    <div class="video">
+      <strong>Inglês do Zero</strong>
+      <iframe height="200" src="https://www.youtube.com/embed/9JwK4oG3j2A"></iframe>
+    </div>
+    <div class="video">
+      <strong>Palavras Básicas</strong>
+      <iframe height="200" src="https://www.youtube.com/embed/8u8i7oE8LZ8"></iframe>
+    </div>
+    <div class="video">
+      <strong>Frases do Dia a Dia</strong>
+      <iframe height="200" src="https://www.youtube.com/embed/7R3zW8jXq6I"></iframe>
+    </div>
+  </div>
 </div>
 
 <!-- LIBERAÇÃO -->
-<div class="section">
+<div class="card">
   <h2>🔑 Liberar Plano</h2>
-  <input id="code" placeholder="Digite o código recebido">
+  <input id="code" placeholder="Digite o código recebido após o pagamento">
   <button onclick="liberar()">Liberar Plano</button>
 </div>
 
-<!-- ÁREA DO ALUNO -->
-<div class="section">
-  <h2>🎓 Área do Aluno</h2>
+<!-- PLANO BÁSICO -->
+<div id="basico" class="card lock">
+  <h2>📘 Plano Básico</h2>
+  <ul>
+    <li>Alfabeto</li>
+    <li>Verb To Be</li>
+    <li>Apresentação pessoal</li>
+    <li>Frases simples</li>
+    <li>Pronomes</li>
+  </ul>
 
-  <!-- BÁSICO -->
-  <div id="basico" class="lock">
-    <h3>Plano Básico</h3>
-    <div class="videos">
-      <iframe height="200" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
-      <iframe height="200" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
-    </div>
-  </div>
-
-  <!-- INTERMEDIÁRIO -->
-  <div id="inter" class="lock">
-    <h3>Plano Intermediário</h3>
-    <div class="videos">
-      <iframe height="200" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
-      <iframe height="200" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
-    </div>
-  </div>
-
-  <!-- AVANÇADO -->
-  <div id="avanc" class="lock">
-    <h3>Plano Avançado</h3>
-    <div class="videos">
-      <iframe height="200" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
-      <iframe height="200" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
-    </div>
+  <div class="videos">
+    <div class="video"><strong>Alfabeto</strong><iframe height="200" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe></div>
+    <div class="video"><strong>Verb To Be</strong><iframe height="200" src="https://www.youtube.com/embed/2c8kJ1pXnQk"></iframe></div>
+    <div class="video"><strong>Apresentação</strong><iframe height="200" src="https://www.youtube.com/embed/Z2bPpV8E6vE"></iframe></div>
+    <div class="video"><strong>Frases Básicas</strong><iframe height="200" src="https://www.youtube.com/embed/7R3zW8jXq6I"></iframe></div>
   </div>
 </div>
 
-<!-- IA -->
-<div class="section">
-  <h2>🤖 Assistente Inteligente</h2>
-  <div class="chat">
-    <div class="chat-log" id="chat"></div>
-    <input placeholder="Pergunte sobre o curso..." onkeydown="ia(event)">
+<!-- PLANO INTERMEDIÁRIO -->
+<div id="inter" class="card lock">
+  <h2>📗 Plano Intermediário</h2>
+  <ul>
+    <li>Present Simple</li>
+    <li>Past Simple</li>
+    <li>Conversação</li>
+    <li>Inglês no trabalho</li>
+    <li>Perguntas e respostas</li>
+    <li>Listening</li>
+  </ul>
+
+  <div class="videos">
+    <div class="video"><strong>Present Simple</strong><iframe height="200" src="https://www.youtube.com/embed/U3X4sOe5z1k"></iframe></div>
+    <div class="video"><strong>Past Simple</strong><iframe height="200" src="https://www.youtube.com/embed/Qxk5Fz7bR2o"></iframe></div>
+    <div class="video"><strong>Conversação</strong><iframe height="200" src="https://www.youtube.com/embed/4K6lY3kP0zE"></iframe></div>
+    <div class="video"><strong>Inglês no Trabalho</strong><iframe height="200" src="https://www.youtube.com/embed/xJ6N4Hk8sTQ"></iframe></div>
+  </div>
+</div>
+
+<!-- PLANO AVANÇADO -->
+<div id="avanc" class="card lock">
+  <h2>📕 Plano Avançado</h2>
+  <ul>
+    <li>Conversação avançada</li>
+    <li>Phrasal Verbs</li>
+    <li>Inglês para viagens</li>
+    <li>Entrevistas de emprego</li>
+    <li>Situações reais</li>
+    <li>Listening avançado</li>
+    <li>Fluência</li>
+  </ul>
+
+  <div class="videos">
+    <div class="video"><strong>Phrasal Verbs</strong><iframe height="200" src="https://www.youtube.com/embed/FK2yJ3y8K1U"></iframe></div>
+    <div class="video"><strong>Inglês para Viagem</strong><iframe height="200" src="https://www.youtube.com/embed/0Fz5L5n5ZlM"></iframe></div>
+    <div class="video"><strong>Entrevista</strong><iframe height="200" src="https://www.youtube.com/embed/Mq9X9s0TQ8E"></iframe></div>
+    <div class="video"><strong>Conversação Avançada</strong><iframe height="200" src="https://www.youtube.com/embed/5xX8E5x9N2Y"></iframe></div>
+    <div class="video"><strong>Fluência</strong><iframe height="200" src="https://www.youtube.com/embed/Jh7P0k3zR8I"></iframe></div>
   </div>
 </div>
 
@@ -171,28 +148,18 @@ footer{text-align:center;opacity:.7;margin-top:60px}
 </div>
 
 <script>
-const codes = {
+const codes={
   BASICO2026:"basico",
   INTER2026:"inter",
   AVANC2026:"avanc"
 }
-
 function liberar(){
   const c=document.getElementById("code").value.toUpperCase()
-  const plano=codes[c]
-  if(plano){
-    document.getElementById(plano).classList.remove("lock")
+  if(codes[c]){
+    document.getElementById(codes[c]).classList.remove("lock")
     alert("Plano liberado com sucesso!")
   }else{
     alert("Código inválido")
-  }
-}
-
-function ia(e){
-  if(e.key==="Enter"){
-    const chat=document.getElementById("chat")
-    chat.innerHTML+=`<div>🤖 Posso te ajudar com aulas, planos e organização do curso.</div>`
-    e.target.value=""
   }
 }
 </script>
