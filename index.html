@@ -2,137 +2,154 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Inglês na Sua Mão • Global English School</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riqueza Inteligente - Educação Financeira</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!-- CSS -->
 <style>
-*{box-sizing:border-box;font-family:Inter,sans-serif}
-body{margin:0;background:linear-gradient(180deg,#080c22,#0a1a4f);color:#fff}
-header{position:sticky;top:0;background:#080c22;border-bottom:1px solid rgba(255,255,255,.1)}
-.nav{max-width:1400px;margin:auto;padding:20px;display:flex;justify-content:space-between}
-.nav a{color:#fff;text-decoration:none;margin-left:20px}
-.container{max-width:1400px;margin:auto;padding:40px 20px}
-.section{background:#0c1233;border-radius:30px;padding:50px;margin-bottom:60px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
-.card{background:#0b102d;border-radius:22px;padding:25px}
-.hidden{display:none}
-iframe{width:100%;border-radius:14px}
-input,button{width:100%;padding:16px;border-radius:14px;border:none;margin-top:12px}
-button{background:#ffd700;font-weight:700;cursor:pointer}
-.price{font-size:34px;color:#ffd700;font-weight:900}
-.badge{background:#ffd700;color:#000;padding:6px 14px;border-radius:20px;display:inline-block}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
+body{background:#f9f9f9;color:#333;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+header{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:20px 50px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:1000;}
+header .logo{font-weight:700;font-size:24px;color:#4B6EF6;}
+nav ul{list-style:none;display:flex;gap:25px;}
+nav ul li{font-weight:500;}
+nav ul li a:hover{color:#4B6EF6;}
+.btn-cta{background:#4B6EF6;color:#fff;padding:10px 20px;border-radius:5px;transition:0.3s;}
+.btn-cta:hover{background:#3a53d1;cursor:pointer;}
+
+/* Hero */
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:90vh;background:linear-gradient(135deg,#4B6EF6,#6ED0F0);color:#fff;padding:0 20px;}
+.hero h1{font-size:48px;margin-bottom:20px;animation:fadeIn 1s ease forwards;}
+.hero p{font-size:20px;margin-bottom:30px;animation:fadeIn 2s ease forwards;}
+.hero .buttons{display:flex;gap:20px;flex-wrap:wrap;animation:fadeIn 3s ease forwards;}
+
+/* Sections */
+section{padding:80px 50px;}
+section h2{font-size:36px;margin-bottom:50px;text-align:center;color:#4B6EF6;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+
+/* Cards */
+.card{background:#fff;border-radius:10px;padding:30px 20px;box-shadow:0 5px 20px rgba(0,0,0,0.1);transition:0.3s;}
+.card:hover{transform:translateY(-10px);box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+.card h3{font-size:24px;margin-bottom:15px;color:#4B6EF6;}
+.card p{margin-bottom:10px;}
+
+/* Price */
+.price{font-size:28px;font-weight:700;margin-bottom:20px;color:#333;}
+
+/* Chat */
+.ai-chat .chat-box{max-width:600px;margin:0 auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.1);}
+.ai-chat .chat-box input{width:100%;padding:15px;border-radius:5px;border:1px solid #ddd;margin-top:10px;}
+
+/* Footer */
+footer{background:#333;color:#fff;padding:50px;text-align:center;}
+footer p{margin-bottom:10px;}
+
+@keyframes fadeIn{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+@media(max-width:768px){header{flex-direction:column;gap:15px;} nav ul{flex-direction:column;gap:10px;}}
 </style>
 </head>
-
 <body>
 
+<!-- Header -->
 <header>
-  <div class="nav">
-    <strong>🌍 Inglês na Sua Mão</strong>
-    <div>
-      <a href="#planos">Planos</a>
-      <a href="#curso">Curso</a>
-    </div>
-  </div>
+  <div class="logo">Riqueza Inteligente</div>
+  <nav>
+    <ul>
+      <li><a href="#earn">Ganhar Dinheiro</a></li>
+      <li><a href="#invest">Investimentos</a></li>
+      <li><a href="#realestate">Imóveis & Veículos</a></li>
+      <li><a href="#billionaire">Estratégias Bilionárias</a></li>
+      <li><a href="#plans">Planos</a></li>
+      <li><a href="#ai">IA</a></li>
+    </ul>
+  </nav>
+  <a class="btn-cta" href="#plans">Comece Agora</a>
 </header>
 
-<div class="container">
-
-<!-- PLANOS -->
-<div id="planos" class="section">
-<h2>💳 Planos</h2>
-<div class="grid">
-  <div class="card">
-    <span class="badge">Grátis</span>
-    <p>Aulas iniciais liberadas</p>
+<!-- Hero -->
+<section class="hero">
+  <h1>Aprenda a Ganhar, Investir e Multiplicar Seu Dinheiro</h1>
+  <p>Estratégias financeiras, investimentos, compra e venda de imóveis e veículos, e passos para crescer até se tornar bilionário.</p>
+  <div class="buttons">
+    <a href="#plans" class="btn-cta">Veja os Planos</a>
+    <a href="#ai" class="btn-cta">Experimente a IA</a>
   </div>
-  <div class="card">
-    <span class="badge">Básico</span>
-    <p class="price">R$ 49,90</p>
+</section>
+
+<!-- Ganhar Dinheiro -->
+<section id="earn">
+  <h2>Como Ganhar Dinheiro</h2>
+  <div class="cards">
+    <div class="card"><h3>Freelance e Negócios</h3><p>Crie serviços digitais ou físicos e monetize suas habilidades.</p></div>
+    <div class="card"><h3>Empreendedorismo</h3><p>Crie produtos, vendas e renda passiva de forma estratégica.</p></div>
+    <div class="card"><h3>Renda Passiva</h3><p>Investimentos e negócios que geram lucro mesmo quando você não trabalha.</p></div>
+    <div class="card"><h3>Marketing Digital</h3><p>Aprenda a vender online e alcançar milhões de pessoas.</p></div>
   </div>
-  <div class="card">
-    <span class="badge">Intermediário</span>
-    <p class="price">R$ 99,90</p>
+</section>
+
+<!-- Investimentos -->
+<section id="invest" style="background:#f0f4ff;">
+  <h2>Investimentos</h2>
+  <div class="cards">
+    <div class="card"><h3>Renda Fixa</h3><p>Tesouro Direto, CDB, LCI/LCA e outros investimentos seguros.</p></div>
+    <div class="card"><h3>Renda Variável</h3><p>Ações, ETFs e fundos de investimento para multiplicar capital.</p></div>
+    <div class="card"><h3>Criptomoedas</h3><p>Aprenda a investir de forma segura em moedas digitais.</p></div>
+    <div class="card"><h3>Fundos Imobiliários</h3><p>Investir em imóveis sem comprar diretamente, recebendo aluguel e valorização.</p></div>
   </div>
-  <div class="card">
-    <span class="badge">Avançado</span>
-    <p class="price">R$ 199,90</p>
+</section>
+
+<!-- Imóveis & Veículos -->
+<section id="realestate">
+  <h2>Compra e Venda de Imóveis e Veículos</h2>
+  <div class="cards">
+    <div class="card"><h3>Comprar Imóveis</h3><p>Passo a passo para adquirir imóveis valorizados e gerar lucro.</p></div>
+    <div class="card"><h3>Vender Imóveis</h3><p>Como reformar, divulgar e vender imóveis com lucro alto.</p></div>
+    <div class="card"><h3>Veículos</h3><p>Compra, valorização e venda de veículos como investimento.</p></div>
+    <div class="card"><h3>Aluguel e Renda Passiva</h3><p>Como alugar imóveis ou veículos para gerar fluxo constante de dinheiro.</p></div>
   </div>
-</div>
-</div>
+</section>
 
-<!-- LIBERAÇÃO -->
-<div class="section">
-<h2>🔑 Liberar Plano</h2>
-<input id="codigo" placeholder="Digite o código recebido após o pagamento">
-<button onclick="liberarPlano()">Liberar acesso</button>
-<p id="msg"></p>
-</div>
+<!-- Estratégias Bilionárias -->
+<section id="billionaire" style="background:#f0f4ff;">
+  <h2>Estratégias para se Tornar Bilionário</h2>
+  <div class="cards">
+    <div class="card"><h3>Investir Consistentemente</h3><p>Comece cedo, reinvista os lucros e cresça seu patrimônio.</p></div>
+    <div class="card"><h3>Múltiplas Fontes de Renda</h3><p>Combine renda passiva, negócios e investimentos.</p></div>
+    <div class="card"><h3>Escalar Negócios</h3><p>Crie negócios que cresçam e alcancem milhões de pessoas.</p></div>
+    <div class="card"><h3>Diversificação</h3><p>Não dependa de apenas um tipo de investimento ou renda.</p></div>
+  </div>
+</section>
 
-<!-- CURSO -->
-<div id="curso" class="section">
-<h2>📚 Aulas</h2>
+<!-- Planos -->
+<section id="plans">
+  <h2>Planos de Assinatura</h2>
+  <div class="cards">
+    <div class="card"><h3>Básico</h3><p>Conteúdos iniciais e dicas práticas.</p><div class="price">R$49/mês</div></div>
+    <div class="card"><h3>Intermediário</h3><p>Conteúdos completos + simuladores de investimento.</p><div class="price">R$99/mês</div></div>
+    <div class="card"><h3>Avançado</h3><p>Mentorias, cursos completos e estratégias detalhadas.</p><div class="price">R$199/mês</div></div>
+    <div class="card"><h3>Premium</h3><p>Acesso total, consultoria financeira e comunidade VIP.</p><div class="price">R$299/mês</div></div>
+  </div>
+</section>
 
-<!-- GRÁTIS -->
-<div class="card">
-<h3>🎁 Aula Grátis</h3>
-<iframe height="200" src="https://www.youtube.com/embed/LZ7mKX8pM_w"></iframe>
-<p>Hello • Hi • Good Morning</p>
-</div>
+<!-- IA Simulada -->
+<section id="ai">
+  <h2>Chat de IA Financeira</h2>
+  <div class="ai-chat">
+    <div class="chat-box">
+      <p>💬 Pergunte algo sobre investimentos ou finanças:</p>
+      <input type="text" placeholder="Ex: Como posso investir 1000 reais?" onkeydown="if(event.key==='Enter'){alert('IA Simulada: ótimo investimento seria diversificar entre renda fixa, ações e fundos imobiliários!'); this.value='';}">
+    </div>
+  </div>
+</section>
 
-<!-- BÁSICO -->
-<div id="basico" class="card hidden">
-<h3>📘 Básico</h3>
-<iframe height="200" src="https://www.youtube.com/embed/0Fz5L5n5ZlM"></iframe>
-<p>Verbo To Be • Frases simples</p>
-<p>Atividade: I ___ a student</p>
-</div>
-
-<!-- INTERMEDIÁRIO -->
-<div id="inter" class="card hidden">
-<h3>📗 Intermediário</h3>
-<iframe height="200" src="https://www.youtube.com/embed/HS24PywYlxM"></iframe>
-<p>Conversação diária</p>
-<p>Atividade: frase no passado</p>
-</div>
-
-<!-- AVANÇADO -->
-<div id="avanc" class="card hidden">
-<h3>📕 Avançado</h3>
-<iframe height="200" src="https://www.youtube.com/embed/KZpYtQz5jJc"></iframe>
-<p>Fluência e inglês profissional</p>
-<p>Atividade: texto sobre futuro</p>
-</div>
-
-</div>
-
-</div>
-
-<script>
-const planos={
-  "BASICO2026":"basico",
-  "INTER2026":"inter",
-  "AVANC2026":"avanc"
-};
-
-function liberarPlano(){
-  const c=document.getElementById("codigo").value.toUpperCase();
-  const msg=document.getElementById("msg");
-  if(planos[c]){
-    document.getElementById(planos[c]).classList.remove("hidden");
-    localStorage.setItem("plano",planos[c]);
-    msg.innerText="✅ Plano liberado com sucesso!";
-  }else{
-    msg.innerText="❌ Código inválido";
-  }
-}
-
-const salvo=localStorage.getItem("plano");
-if(salvo){
-  document.getElementById(salvo).classList.remove("hidden");
-}
-</script>
+<!-- Footer -->
+<footer>
+  <p>©2026 Riqueza Inteligente • Todos os direitos reservados</p>
+  <p>Contato: contato@riquezainteligente.com</p>
+</footer>
 
 </body>
 </html>
