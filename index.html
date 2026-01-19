@@ -25,20 +25,18 @@ header p{opacity:.9}
 }
 
 h2{color:#0a3cff;margin-top:0}
-input,button{
+
+button{
   width:100%;
   padding:14px;
-  margin:8px 0;
+  margin:10px 0;
   border-radius:10px;
-  border:1px solid #ddd;
-  font-size:15px;
-}
-button{
-  background:#0a3cff;
-  color:#fff;
   border:none;
+  font-size:15px;
   font-weight:600;
   cursor:pointer;
+  background:#0a3cff;
+  color:#fff;
 }
 button:hover{opacity:.9}
 
@@ -46,22 +44,31 @@ button:hover{opacity:.9}
   border:1px solid #eee;
   border-radius:16px;
   padding:20px;
-  margin:15px 0;
+  margin:20px 0;
 }
+
+.lock{opacity:.45}
 
 .pix{
   background:#f4f6f8;
-  padding:10px;
+  padding:12px;
   border-radius:10px;
   margin-top:10px;
   font-size:14px;
 }
 
-iframe{width:100%;border-radius:14px;margin-top:10px}
-.hidden{display:none}
-.logout{background:#999;margin-top:20px}
+iframe{
+  width:100%;
+  border-radius:14px;
+  margin-top:10px;
+}
 
-footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
+footer{
+  text-align:center;
+  color:#fff;
+  margin-top:30px;
+  opacity:.8;
+}
 </style>
 </head>
 
@@ -76,108 +83,59 @@ footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
 
 <div class="card">
 
-<!-- LOGIN -->
-<div id="loginBox">
-  <h2>Entrar</h2>
-  <input id="email" placeholder="Email">
-  <input id="senha" type="password" placeholder="Senha">
-
-  <button onclick="login()">Entrar</button>
-  <button onclick="registrar()">Criar conta</button>
+<h2>🎁 Aula Grátis</h2>
+<div class="plan">
+  <h3>Aula 1 – Introdução ao Inglês</h3>
+  <iframe height="315" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
 </div>
 
-<!-- CONTEÚDO -->
-<div id="conteudoBox" class="hidden">
-  <h2 id="planoTxt"></h2>
-  <div id="aulas"></div>
+<h2>🔒 Conteúdos Premium</h2>
 
-  <h2>Planos</h2>
-
-  <div class="plan">
-    <h3>🎁 Demonstração Grátis</h3>
-    <p>1 aula liberada</p>
-    <button onclick="ativarPlano('gratis')">Acessar</button>
+<div class="plan lock">
+  <h3>📘 Plano Básico — R$ 49,90</h3>
+  <p>✔️ Cumprimentos<br>✔️ Verb To Be<br>✔️ Frases básicas</p>
+  <div class="pix">
+    <strong>PIX:</strong><br>
+    59548d60-a5b8-434d-9590-86244460d7cc
   </div>
+  <button onclick="liberar('basico')">Já paguei</button>
+</div>
 
-  <div class="plan">
-    <h3>📘 Básico — R$ 49,90</h3>
-    <div class="pix">PIX: 59548d60-a5b8-434d-9590-86244460d7cc</div>
-    <button onclick="ativarPlano('basico')">Já paguei</button>
+<div class="plan lock">
+  <h3>📗 Plano Intermediário — R$ 99,90</h3>
+  <p>✔️ Tudo do Básico<br>✔️ Conversação<br>✔️ Presente e Passado</p>
+  <div class="pix">
+    <strong>PIX:</strong><br>
+    59548d60-a5b8-434d-9590-86244460d7cc
   </div>
+  <button onclick="liberar('intermediario')">Já paguei</button>
+</div>
 
-  <div class="plan">
-    <h3>📗 Intermediário — R$ 99,90</h3>
-    <div class="pix">PIX: 59548d60-a5b8-434d-9590-86244460d7cc</div>
-    <button onclick="ativarPlano('intermediario')">Já paguei</button>
+<div class="plan lock">
+  <h3>📕 Plano Avançado — R$ 149,90</h3>
+  <p>✔️ Tudo dos planos anteriores<br>✔️ Fluência<br>✔️ Situações reais</p>
+  <div class="pix">
+    <strong>PIX:</strong><br>
+    59548d60-a5b8-434d-9590-86244460d7cc
   </div>
-
-  <div class="plan">
-    <h3>📕 Avançado — R$ 149,90</h3>
-    <div class="pix">PIX: 59548d60-a5b8-434d-9590-86244460d7cc</div>
-    <button onclick="ativarPlano('avancado')">Já paguei</button>
-  </div>
-
-  <button class="logout" onclick="logout()">Sair</button>
+  <button onclick="liberar('avancado')">Já paguei</button>
 </div>
 
 </div>
 
-<footer>© 2026 Inglês na Sua Mão</footer>
+<footer>
+  © 2026 Inglês na Sua Mão • Golden Circular
+</footer>
 
 </div>
 
 <script>
-let usuario = JSON.parse(localStorage.getItem("usuario"));
-
-function registrar(){
-  if(!email.value || !senha.value) return alert("Preencha tudo");
-  localStorage.setItem("usuario", JSON.stringify({
-    email: email.value,
-    plano: "gratis"
-  }));
-  carregar();
+function liberar(plano){
+  alert(
+    "Plano " + plano.toUpperCase() +
+    " liberado!\n(Substitua este alerta por liberação real depois)"
+  );
 }
-
-function login(){
-  let u = JSON.parse(localStorage.getItem("usuario"));
-  if(!u || u.email !== email.value){
-    alert("Conta não encontrada");
-    return;
-  }
-  carregar();
-}
-
-function carregar(){
-  loginBox.classList.add("hidden");
-  conteudoBox.classList.remove("hidden");
-  usuario = JSON.parse(localStorage.getItem("usuario"));
-  mostrar(usuario.plano);
-}
-
-function ativarPlano(p){
-  usuario.plano = p;
-  localStorage.setItem("usuario", JSON.stringify(usuario));
-  mostrar(p);
-}
-
-function mostrar(p){
-  planoTxt.innerText = "Plano ativo: " + p;
-  let h = `<div class="plan">
-    <h3>Aula 1 – Introdução</h3>
-    <iframe height="315" src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
-  </div>`;
-  if(p !== "gratis") h += `<div class="plan"><h3>Verb To Be</h3></div>`;
-  if(p === "intermediario" || p === "avancado") h += `<div class="plan"><h3>Conversação</h3></div>`;
-  if(p === "avancado") h += `<div class="plan"><h3>Fluência</h3></div>`;
-  aulas.innerHTML = h;
-}
-
-function logout(){
-  localStorage.removeItem("usuario");
-  location.reload();
-}
-
-if(usuario) carregar();
 </script>
 
 </body>
