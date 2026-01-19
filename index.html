@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Inglês na Sua Mão | Plataforma Oficial</title>
+<title>Inglês na Sua Mão | Plataforma Premium</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Firebase -->
@@ -11,170 +11,190 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <style>
-*{box-sizing:border-box;font-family:Arial, sans-serif}
-body{margin:0;background:#f4f6f8}
-header{background:#0a3cff;color:#fff;text-align:center;padding:30px}
-.container{max-width:1000px;margin:auto;padding:20px}
-.box{background:#fff;padding:20px;border-radius:10px;margin-bottom:20px}
-h2{color:#0a3cff}
-input,button{width:100%;padding:10px;margin:6px 0}
-button{background:#0a3cff;color:#fff;border:none;border-radius:6px;font-weight:bold}
-button.pay{background:#00a650}
-button.logout{background:#777}
+*{box-sizing:border-box;font-family:'Segoe UI',Arial}
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#0a3cff,#1e90ff);
+}
+.main{max-width:1100px;margin:auto;padding:30px}
+header{text-align:center;color:#fff;margin-bottom:30px}
+header h1{margin:0;font-size:36px}
+header p{opacity:.9}
+
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+h2{color:#0a3cff;margin-top:0}
+input,button{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:15px;
+}
+button{
+  background:#0a3cff;
+  color:#fff;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+}
+button:hover{opacity:.9}
+
+.social{display:flex;gap:10px}
+.social button{flex:1}
+.google{background:#db4437}
+.apple{background:#000}
+
+.plan{
+  border:1px solid #eee;
+  border-radius:16px;
+  padding:20px;
+  margin:15px 0;
+}
+.plan.lock{opacity:.45}
+
+.pix{
+  background:#f4f6f8;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+  font-size:14px;
+}
+
+iframe{width:100%;border-radius:14px;margin-top:10px}
 .hidden{display:none}
-.plan{border:1px solid #ddd;padding:15px;border-radius:8px;margin:15px 0}
-.lock{opacity:.5}
-.pix{background:#f1f1f1;padding:10px;border-radius:6px;margin:10px 0}
-iframe{width:100%;border-radius:8px;margin-top:10px}
-footer{background:#222;color:#fff;text-align:center;padding:15px}
+.logout{background:#999;margin-top:20px}
+
+footer{text-align:center;color:#fff;margin-top:30px;opacity:.8}
 </style>
 </head>
 
 <body>
 
+<div class="main">
+
 <header>
   <h1>Inglês na Sua Mão</h1>
-  <p>Aprenda inglês do zero à fluência</p>
+  <p>Do zero à fluência, no seu ritmo</p>
 </header>
 
-<div class="container">
+<div class="card">
 
 <!-- LOGIN -->
-<div class="box" id="loginBox">
-  <h2>Login / Cadastro</h2>
+<div id="loginBox">
+  <h2>Entrar na plataforma</h2>
   <input id="email" placeholder="Email">
   <input id="senha" type="password" placeholder="Senha">
-  <button onclick="login()">Entrar</button>
-  <button onclick="registrar()">Criar Conta</button>
+
+  <button onclick="loginEmail()">Entrar</button>
+  <button onclick="registrar()">Criar conta</button>
+
+  <hr>
+
+  <div class="social">
+    <button class="google" onclick="loginGoogle()">Google</button>
+    <button class="apple" onclick="loginApple()">Apple</button>
+  </div>
 </div>
 
-<!-- PAGAMENTO -->
-<div class="box hidden" id="pagamentoBox">
-  <h2>Escolha seu Plano</h2>
+<!-- CONTEÚDO -->
+<div id="conteudoBox" class="hidden">
+  <h2 id="planoTxt"></h2>
+  <div id="aulas"></div>
+
+  <h2>Planos</h2>
 
   <div class="plan">
     <h3>🎁 Demonstração Grátis</h3>
     <p>1 aula liberada</p>
-    <button onclick="liberarGratis()">Acessar grátis</button>
+    <button onclick="ativarPlano('gratis')">Acessar</button>
   </div>
 
   <div class="plan">
     <h3>📘 Básico — R$ 49,90</h3>
-    <div class="pix"><strong>PIX:</strong> 59548d60-a5b8-434d-9590-86244460d7cc</div>
-    <button class="pay" onclick="confirmarPagamento('basico')">Já paguei</button>
+    <div class="pix">PIX: 59548d60-a5b8-434d-9590-86244460d7cc</div>
+    <button onclick="ativarPlano('basico')">Já paguei</button>
   </div>
 
   <div class="plan">
     <h3>📗 Intermediário — R$ 99,90</h3>
-    <div class="pix"><strong>PIX:</strong> 59548d60-a5b8-434d-9590-86244460d7cc</div>
-    <button class="pay" onclick="confirmarPagamento('intermediario')">Já paguei</button>
+    <div class="pix">PIX: 59548d60-a5b8-434d-9590-86244460d7cc</div>
+    <button onclick="ativarPlano('intermediario')">Já paguei</button>
   </div>
 
   <div class="plan">
     <h3>📕 Avançado — R$ 149,90</h3>
-    <div class="pix"><strong>PIX:</strong> 59548d60-a5b8-434d-9590-86244460d7cc</div>
-    <button class="pay" onclick="confirmarPagamento('avancado')">Já paguei</button>
+    <div class="pix">PIX: 59548d60-a5b8-434d-9590-86244460d7cc</div>
+    <button onclick="ativarPlano('avancado')">Já paguei</button>
   </div>
-</div>
 
-<!-- ÁREA DO ALUNO -->
-<div class="box hidden" id="alunoBox">
-  <h2>Área do Aluno</h2>
-  <p id="planoAtivo"></p>
-  <div id="aulas"></div>
   <button class="logout" onclick="logout()">Sair</button>
 </div>
 
 </div>
 
-<footer>
-  <p>© 2026 Inglês na Sua Mão</p>
-</footer>
+<footer>© 2026 Inglês na Sua Mão</footer>
+
+</div>
 
 <script>
-// 🔥 CONFIG FIREBASE (TROQUE PELOS SEUS DADOS)
 firebase.initializeApp({
   apiKey: "SUA_API_KEY",
   authDomain: "SEU_PROJETO.firebaseapp.com",
   projectId: "SEU_PROJETO"
 });
 
-const auth = firebase.auth();
-const db = firebase.firestore();
-let usuario = null;
+const auth=firebase.auth();
+const db=firebase.firestore();
 
 function registrar(){
-  auth.createUserWithEmailAndPassword(email.value, senha.value)
-  .then(user=>{
-    db.collection("alunos").doc(user.user.uid).set({ plano:"gratis" });
-  });
+  auth.createUserWithEmailAndPassword(email.value,senha.value)
+  .then(u=>db.collection("alunos").doc(u.user.uid).set({plano:"gratis"}));
+}
+function loginEmail(){
+  auth.signInWithEmailAndPassword(email.value,senha.value);
+}
+function loginGoogle(){
+  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+}
+function loginApple(){
+  auth.signInWithPopup(new firebase.auth.OAuthProvider('apple.com'));
 }
 
-function login(){
-  auth.signInWithEmailAndPassword(email.value, senha.value);
-}
-
-auth.onAuthStateChanged(user=>{
-  if(user){
-    usuario = user;
+auth.onAuthStateChanged(u=>{
+  if(u){
     loginBox.classList.add("hidden");
-    db.collection("alunos").doc(user.uid).get().then(doc=>{
-      mostrarAulas(doc.data().plano);
+    conteudoBox.classList.remove("hidden");
+    db.collection("alunos").doc(u.uid).get().then(d=>{
+      if(!d.exists) db.collection("alunos").doc(u.uid).set({plano:"gratis"});
+      mostrar(d.data()?.plano||"gratis");
     });
   }
 });
 
-function liberarGratis(){
-  db.collection("alunos").doc(usuario.uid).update({plano:"gratis"});
-  mostrarAulas("gratis");
+function ativarPlano(p){
+  db.collection("alunos").doc(auth.currentUser.uid).set({plano:p});
+  mostrar(p);
 }
 
-function confirmarPagamento(plano){
-  alert("Pagamento enviado para análise.");
-  db.collection("alunos").doc(usuario.uid).update({plano});
-  mostrarAulas(plano);
+function mostrar(p){
+  planoTxt.innerText="Plano ativo: "+p;
+  let h=`<div class="plan"><h3>Aula 1 – Introdução</h3>
+  <iframe height="315" src="https://www.youtube.com/embed/VIDEO_ID"></iframe></div>`;
+  if(p!="gratis") h+=`<div class="plan"><h3>Verb To Be</h3></div>`;
+  if(p=="intermediario"||p=="avancado") h+=`<div class="plan"><h3>Conversação</h3></div>`;
+  if(p=="avancado") h+=`<div class="plan"><h3>Fluência</h3></div>`;
+  aulas.innerHTML=h;
 }
 
-function mostrarAulas(plano){
-  pagamentoBox.classList.add("hidden");
-  alunoBox.classList.remove("hidden");
-  planoAtivo.innerText = "Plano ativo: " + plano;
-  let html = "";
-
-  html += aula("Aula 1","Introdução ao Inglês","VIDEO_ID");
-
-  if(plano!="gratis"){
-    html += aula("Aula 2","Cumprimentos","VIDEO_ID");
-    html += aula("Aula 3","Verb To Be","VIDEO_ID");
-  } else {
-    html += bloqueado();
-  }
-
-  if(plano=="intermediario" || plano=="avancado"){
-    html += aula("Aula 4","Conversação","VIDEO_ID");
-    html += aula("Aula 5","Presente e Passado","VIDEO_ID");
-  }
-
-  if(plano=="avancado"){
-    html += aula("Aula 6","Fluência","VIDEO_ID");
-    html += aula("Aula 7","Situações Reais","VIDEO_ID");
-  }
-
-  aulas.innerHTML = html;
-}
-
-function aula(t,d,v){
-  return `<div class="plan"><h3>${t} – ${d}</h3>
-  <iframe height="315" src="https://www.youtube.com/embed/${v}" allowfullscreen></iframe></div>`;
-}
-
-function bloqueado(){
-  return `<div class="plan lock">🔒 Conteúdo bloqueado<br>Faça o pagamento para liberar</div>`;
-}
-
-function logout(){
-  auth.signOut(); location.reload();
-}
+function logout(){auth.signOut();location.reload();}
 </script>
 
 </body>
